@@ -1,14 +1,15 @@
 import { Clock, MapPin, Phone } from 'lucide-react'
 
 const office = {
-  address: 'SHIS QI 5, Bloco A, Sala 201',
-  district: 'Lago Sul, Brasília – DF',
-  cep: '71615-050',
+  address: 'SHS Quadra 6, Conjunto A, Bloco E, Sala 1201',
+  building: 'Complexo Brasil 21',
+  district: 'Asa Sul, Brasília – DF',
+  cep: '70316-000',
   phone: '+55 (61) 3000-0000',
   hours: 'Segunda a sexta, 9h às 18h',
 }
 
-const mapQuery = encodeURIComponent(`${office.address}, ${office.district}, ${office.cep}`)
+const mapQuery = encodeURIComponent(`${office.building}, SHS Quadra 6, ${office.district}`)
 const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&z=16&output=embed`
 const mapLinkUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
 
@@ -39,7 +40,7 @@ function Office() {
                   <dd className="mt-2 text-sm leading-7">
                     {office.address}
                     <br />
-                    {office.district}
+                    {office.building} · {office.district}
                     <br />
                     CEP {office.cep}
                   </dd>
