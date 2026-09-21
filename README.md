@@ -1,14 +1,16 @@
-# Welcome to your Lovable project
+# Legal Vision Prototype
+
+gostaria de criar uma prototipaçao de alta fidelidade (mockup), de uma landding page de um escritorio de advogacia. tendo como referencia a https://elpidiodonizetti.com.br/. quero que seja responsivo. junte a section de deapartamento e serviço.
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/82bb0a50-3eb0-4f16-864b-a0435c9a3560).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +22,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
