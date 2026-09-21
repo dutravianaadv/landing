@@ -84,3 +84,17 @@
   .hero-shade { background: linear-gradient(180deg, color-mix(in oklab, var(--hero) 60%, transparent), color-mix(in oklab, var(--hero) 94%, transparent)); }
   .practice-row:hover { padding-inline: 0; }
 }
+
+/* Carrossel de departamentos (Swiper) */
+.swiper.departments-swiper {
+  --swiper-pagination-color: var(--brand);
+  --swiper-pagination-bullet-inactive-color: var(--surface-dark-foreground);
+  --swiper-pagination-bullet-inactive-opacity: 0.25;
+  --swiper-pagination-bullet-size: 6px;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+  --swiper-pagination-bottom: 0;
+  overflow: visible;
+  padding-bottom: 2.25rem;
+}
+.swiper.departments-swiper .swiper-slide { height: auto; }
+.swiper.departments-swiper .swiper-pagination-bullet { border-radius: 0; }

@@ -4,7 +4,6 @@ import { ChevronDown, Menu, X } from 'lucide-react'
 const links = [
   { href: '#escritorio', label: 'O escritório' },
   { href: '#atuacao', label: 'Atuação' },
-  { href: '#equipe', label: 'Equipe' },
   { href: '#contato', label: 'Contato' },
 ]
 

@@ -8,6 +8,7 @@ departamentos e serviços unificadas.
 
 - [Vite](https://vite.dev) + [React 19](https://react.dev) + TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com) (via `@tailwindcss/vite`)
+- [Swiper](https://swiperjs.com) para o carrossel de departamentos
 - [lucide-react](https://lucide.dev) para ícones
 - ESLint (flat config)
 
@@ -22,8 +23,7 @@ src/
     Header.tsx
     Hero.tsx
     About.tsx       # O escritório
-    Practices.tsx   # Departamentos & serviços
-    Team.tsx
+    Departments.tsx # Departamentos, especialistas e serviços (carrossel)
     Footer.tsx      # Contato
   assets/
 ```
