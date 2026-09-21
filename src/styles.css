@@ -19,6 +19,8 @@
  */
 
 @theme inline {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,29 +61,49 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-muted: var(--hero-muted);
+  --color-hero-line: var(--hero-line);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-dark-foreground: var(--surface-dark-foreground);
+  --color-surface-dark-muted: var(--surface-dark-muted);
+  --color-dark-line: var(--dark-line);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 0.125rem;
+  --background: oklch(0.965 0.012 82);
+  --foreground: oklch(0.215 0.015 67);
+  --card: oklch(0.985 0.007 80);
+  --card-foreground: oklch(0.215 0.015 67);
+  --popover: oklch(0.985 0.007 80);
+  --popover-foreground: oklch(0.215 0.015 67);
+  --primary: oklch(0.64 0.08 76);
+  --primary-foreground: oklch(0.18 0.012 67);
+  --secondary: oklch(0.91 0.017 79);
+  --secondary-foreground: oklch(0.215 0.015 67);
+  --muted: oklch(0.925 0.012 78);
+  --muted-foreground: oklch(0.46 0.019 67);
+  --accent: oklch(0.64 0.08 76);
+  --accent-foreground: oklch(0.18 0.012 67);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.82 0.018 76);
+  --input: oklch(0.82 0.018 76);
+  --ring: oklch(0.64 0.08 76);
+  --brand: oklch(0.71 0.09 77);
+  --brand-foreground: oklch(0.18 0.012 67);
+  --hero: oklch(0.15 0.014 58);
+  --hero-foreground: oklch(0.96 0.014 79);
+  --hero-muted: oklch(0.78 0.016 76);
+  --hero-line: oklch(0.96 0.014 79 / 20%);
+  --surface-dark: oklch(0.2 0.018 67);
+  --surface-dark-foreground: oklch(0.96 0.014 79);
+  --surface-dark-muted: oklch(0.72 0.015 74);
+  --dark-line: oklch(0.96 0.014 79 / 15%);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +162,35 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
   }
+
+  html { scroll-behavior: smooth; }
+
+  a, button { outline-offset: 4px; }
+}
+
+@layer components {
+  .font-display { font-family: var(--font-display); font-weight: 500; }
+  .eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-muted-foreground); }
+  .nav-link { position: relative; padding-block: 0.5rem; transition: color 180ms ease; }
+  .nav-link:hover { color: var(--color-hero-foreground); }
+  .hero-shade { background: linear-gradient(90deg, color-mix(in oklab, var(--hero) 96%, transparent) 0%, color-mix(in oklab, var(--hero) 73%, transparent) 44%, color-mix(in oklab, var(--hero) 14%, transparent) 100%); }
+  .practice-row { transition: background-color 200ms ease, padding-inline 200ms ease; }
+  .practice-row:hover { background-color: color-mix(in oklab, var(--surface-dark-foreground) 4%, transparent); padding-inline: 1rem; }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-reveal { animation: reveal-up 900ms cubic-bezier(.2,.7,.2,1) both; }
+}
+
+@media (max-width: 639px) {
+  .hero-shade { background: linear-gradient(180deg, color-mix(in oklab, var(--hero) 60%, transparent), color-mix(in oklab, var(--hero) 94%, transparent)); }
+  .practice-row:hover { padding-inline: 0; }
 }
