@@ -24,6 +24,7 @@ src/
     Hero.tsx
     About.tsx       # O escritório
     Departments.tsx # Departamentos, especialistas e serviços (carrossel)
+    Office.tsx      # Endereço, horário e mapa (Google Maps embed)
     Footer.tsx      # Contato
   assets/
 ```
