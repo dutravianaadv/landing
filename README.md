@@ -1,24 +1,41 @@
-# Legal Vision Prototype
+# Antunes Veiga Advocacia — Landing Page
 
-gostaria de criar uma prototipaçao de alta fidelidade (mockup), de uma landding page de um escritorio de advogacia. tendo como referencia a https://elpidiodonizetti.com.br/. quero que seja responsivo. junte a section de deapartamento e serviço.
+Protótipo de alta fidelidade (mockup) de uma landing page de escritório de advocacia,
+tendo como referência https://elpidiodonizetti.com.br/. Responsivo, com as seções de
+departamentos e serviços unificadas.
 
-This project was built with [Lovable](https://lovable.dev).
+## Stack
 
-## Build with Lovable
+- [Vite](https://vite.dev) + [React 19](https://react.dev) + TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com) (via `@tailwindcss/vite`)
+- [lucide-react](https://lucide.dev) para ícones
+- ESLint (flat config)
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/82bb0a50-3eb0-4f16-864b-a0435c9a3560).
+## Estrutura
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+```
+src/
+  main.tsx          # entrada
+  App.tsx           # composição das seções
+  index.css         # tokens do design system + utilitários
+  components/
+    Header.tsx
+    Hero.tsx
+    About.tsx       # O escritório
+    Practices.tsx   # Departamentos & serviços
+    Team.tsx
+    Footer.tsx      # Contato
+  assets/
+```
 
-## Development
+## Desenvolvimento
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requer Node.js 20+ e npm.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm install
+npm run dev       # servidor local
+npm run build     # type-check + build em dist/
+npm run preview   # serve o build
+npm run lint
 ```
