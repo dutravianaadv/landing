@@ -1,66 +1,92 @@
 import { useState } from 'react'
-import { ChevronDown, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import VersionSwitcher from './VersionSwitcher'
+import { useScrolled } from '../lib/useScrolled'
 
 const links = [
   { href: '#escritorio', label: 'O escritório' },
+  { href: '#metodo', label: 'Método' },
   { href: '#atuacao', label: 'Atuação' },
-  { href: '#contato', label: 'Contato' },
+  { href: '#onde-estamos', label: 'Onde estamos' },
 ]
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const scrolled = useScrolled()
+  const solid = scrolled || menuOpen
 
   return (
-    <header className="absolute inset-x-0 top-0 z-30 border-b border-hero-line">
-      <div className="mx-auto grid h-20 max-w-screen-2xl grid-cols-[minmax(0,1fr)_auto] items-center px-5 sm:h-24 sm:px-8 lg:px-14">
-        <a href="#inicio" className="flex min-w-0 items-center gap-3 text-hero-foreground">
-          <span className="grid size-10 shrink-0 place-items-center border border-brand text-lg font-semibold">
+    <header
+      className={`fixed inset-x-0 top-0 z-30 border-b transition-colors duration-300 ease-classic ${
+        solid ? 'border-hero-line bg-hero/95 backdrop-blur' : 'border-transparent bg-transparent'
+      }`}
+    >
+      <div
+        className={`mx-auto flex max-w-screen-2xl items-center justify-between gap-6 px-5 transition-[height] duration-300 ease-classic sm:px-8 lg:px-14 ${
+          scrolled ? 'h-18' : 'h-20 sm:h-24'
+        }`}
+      >
+        <VersionSwitcher
+          current={1}
+          className="gap-3 text-hero-foreground"
+          menuClassName="border border-hero-line bg-hero text-hero-foreground"
+          itemClassName="transition-colors hover:bg-hero-foreground/5"
+          activeItemClassName="text-brand"
+          mutedClassName="text-hero-muted"
+        >
+          <span className="grid size-10 shrink-0 place-items-center border border-brand font-display text-lg text-brand">
             AV
           </span>
-          <span className="truncate font-display text-lg sm:text-xl">Antunes Veiga</span>
-        </a>
+          <span className="flex min-w-0 flex-col items-start leading-none">
+            <span className="truncate font-display text-xl sm:text-2xl">Antunes Veiga</span>
+            <span className="mt-1 hidden text-[0.625rem] font-semibold uppercase tracking-[0.3em] text-hero-muted sm:block">
+              Advocacia
+            </span>
+          </span>
+        </VersionSwitcher>
 
         <nav
-          className="hidden items-center gap-8 text-xs font-semibold uppercase text-hero-muted lg:flex"
+          className="hidden items-center gap-9 text-[0.8125rem] font-medium uppercase tracking-[0.12em] text-hero-muted lg:flex"
           aria-label="Navegação principal"
         >
           {links.map(({ href, label }) => (
-            <a key={href} className="nav-link flex items-center gap-1" href={href}>
+            <a key={href} className="nav-link" href={href}>
               {label}
-              {href === '#atuacao' && <ChevronDown className="size-3" />}
             </a>
           ))}
-          <a
-            className="border border-brand px-5 py-3 text-hero-foreground transition-colors hover:bg-brand hover:text-brand-foreground"
-            href="#contato"
-          >
-            Fale conosco
-          </a>
         </nav>
 
-        <button
-          type="button"
-          aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-          className="grid size-11 place-items-center border border-hero-line text-hero-foreground lg:hidden"
-        >
-          {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        <div className="flex items-center gap-3">
+          <a href="#contato" className="btn btn-line hidden py-3! text-hero-foreground sm:inline-flex">
+            Fale conosco
+          </a>
+          <button
+            type="button"
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+            className="grid size-11 place-items-center border border-hero-line text-hero-foreground lg:hidden"
+          >
+            {menuOpen ? <X className="size-5" strokeWidth={1.5} /> : <Menu className="size-5" strokeWidth={1.5} />}
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
-        <nav
-          className="border-t border-hero-line bg-hero px-5 py-6 text-hero-foreground lg:hidden"
-          aria-label="Menu móvel"
-        >
-          <div className="flex flex-col gap-5 text-sm uppercase">
-            {links.map(({ href, label }) => (
-              <a key={href} href={href} onClick={() => setMenuOpen(false)}>
-                {label}
-              </a>
-            ))}
-          </div>
+        <nav className="border-t border-hero-line px-5 pb-8 pt-4 text-hero-foreground sm:px-8 lg:hidden" aria-label="Menu móvel">
+          {links.map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className="block border-b border-hero-line py-4 font-display text-3xl"
+            >
+              {label}
+            </a>
+          ))}
+          <a href="#contato" onClick={() => setMenuOpen(false)} className="btn btn-gold mt-6 w-full">
+            Fale conosco
+          </a>
         </nav>
       )}
     </header>

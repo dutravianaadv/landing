@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/*
+ * Design system da versão 5 (ver style4.md): sessão privada de cinema.
+ * Preto absoluto, zero cor: branco, creme "luz de abajur" e três cinzas.
+ * Títulos em sans peso 300 com uma única palavra em serifa itálica.
+ *
+ * VisueltPro -> Inter (ss01, cv11) · Bradford -> Playfair Display itálico
+ */
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Canela", Georgia, serif;
+  --color-void: #000000;
+  --color-charcoal: var(--charcoal);
+  --color-graphite: var(--graphite);
+  --color-cream: var(--lamp-cream);
+  --color-smoke: var(--smoke);
+  --radius-card: 10px;
+  --ease-film: cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+:root {
+  --charcoal: #202020;
+  --graphite: #333333;
+  --lamp-cream: #f5f5f0;
+  --smoke: #999999;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-graphite);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01" on, "cv11" on;
+    color-scheme: dark;
+  }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p, dd { text-wrap: pretty; }
+
+  a, button { outline-offset: 4px; }
+  :focus-visible { outline: 1px solid #ffffff; }
+}
+
+@layer components {
+  /* Palavra-chave emocional: serifa itálica, minúscula, mesmo tamanho do texto ao redor */
+  .accent { font-family: var(--font-serif); font-style: italic; font-weight: 500; letter-spacing: -0.025em; }
+
+  .label { font-size: 0.6875rem; line-height: 1.5; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border-radius: 9999px; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 500; line-height: 1.5; transition: background-color 300ms var(--ease-film), color 300ms var(--ease-film), opacity 300ms var(--ease-film); }
+  .btn-cream { background-color: var(--color-cream); color: #000000; box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 20px 0px; }
+  .btn-cream:hover { opacity: 0.88; }
+  .btn-ghost { border: 1px solid #ffffff; color: #ffffff; padding-block: calc(0.75rem - 1px); }
+  .btn-ghost:hover { background-color: rgb(255 255 255 / 8%); }
+
+  .glass {
+    background-color: rgb(200 200 200 / 10%);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px 0px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset;
+  }
+
+  .scrim-bottom { background: linear-gradient(180deg, rgb(0 0 0 / 0%) 55%, rgb(0 0 0 / 55%) 100%); }
+  .scrim-card { background: linear-gradient(180deg, rgb(0 0 0 / 0%) 45%, rgb(0 0 0 / 70%) 100%); }
+
+  .map-dark { filter: grayscale(1) invert(0.92) contrast(0.9); }
+}
+
+/* Faixa de tribunais em rolagem contínua: o único movimento longo do sistema */
+@keyframes leagues-scrolling {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track { animation: leagues-scrolling 45s linear infinite; }
+}
+
+/* Carrossel de departamentos (Swiper) */
+.swiper.v5-departments-swiper {
+  --swiper-pagination-color: #ffffff;
+  --swiper-pagination-bullet-inactive-color: var(--smoke);
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+  --swiper-pagination-bullet-size: 6px;
+  --swiper-pagination-bottom: 0;
+  overflow: visible;
+  padding-bottom: 2.5rem;
+}
+.swiper.v5-departments-swiper .swiper-slide { height: auto; }
+.swiper.v5-departments-swiper .swiper-wrapper { transition-timing-function: var(--ease-film); }

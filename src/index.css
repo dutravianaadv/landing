@@ -25,6 +25,8 @@
   --color-surface-dark-foreground: var(--surface-dark-foreground);
   --color-surface-dark-muted: var(--surface-dark-muted);
   --color-dark-line: var(--dark-line);
+  --color-paper: var(--paper);
+  --ease-classic: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 :root {
@@ -42,6 +44,7 @@
   --surface-dark-foreground: oklch(0.96 0.014 79);
   --surface-dark-muted: oklch(0.72 0.015 74);
   --dark-line: oklch(0.96 0.014 79 / 15%);
+  --paper: oklch(0.935 0.016 80);
 }
 
 @layer base {
@@ -56,19 +59,32 @@
     letter-spacing: 0;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+  /* Evita palavras soltas na última linha em telas estreitas */
+  h1, h2, h3 { text-wrap: balance; }
+  p, dd { text-wrap: pretty; }
 
   a, button { outline-offset: 4px; }
 }
 
 @layer components {
   .font-display { font-family: var(--font-display); font-weight: 500; }
-  .eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--color-muted-foreground); }
+  /* Palavra de destaque dos títulos: itálico dourado */
+  .font-display em { font-style: italic; color: var(--color-brand); }
+  .eyebrow { display: inline-flex; align-items: center; gap: 0.75rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--color-muted-foreground); }
+  .eyebrow::before { content: ""; width: 2rem; height: 1px; background-color: currentColor; opacity: 0.6; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.75rem; font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; transition: background-color 250ms var(--ease-classic), color 250ms var(--ease-classic), border-color 250ms var(--ease-classic); }
+  .btn-gold { background-color: var(--color-brand); color: var(--color-brand-foreground); }
+  .btn-gold:hover { background-color: color-mix(in oklab, var(--brand) 85%, white); }
+  .btn-line { border: 1px solid currentColor; }
+  .btn-line:hover { background-color: color-mix(in oklab, currentColor 8%, transparent); }
+
+  .map-classic { filter: grayscale(0.7) sepia(0.25) contrast(0.95); }
   .nav-link { position: relative; padding-block: 0.5rem; transition: color 180ms ease; }
   .nav-link:hover { color: var(--color-hero-foreground); }
   .hero-shade { background: linear-gradient(90deg, color-mix(in oklab, var(--hero) 96%, transparent) 0%, color-mix(in oklab, var(--hero) 73%, transparent) 44%, color-mix(in oklab, var(--hero) 14%, transparent) 100%); }
-  .practice-row { transition: background-color 200ms ease, padding-inline 200ms ease; }
-  .practice-row:hover { background-color: color-mix(in oklab, var(--surface-dark-foreground) 4%, transparent); padding-inline: 1rem; }
 }
 
 @keyframes reveal-up {
@@ -82,7 +98,6 @@
 
 @media (max-width: 639px) {
   .hero-shade { background: linear-gradient(180deg, color-mix(in oklab, var(--hero) 60%, transparent), color-mix(in oklab, var(--hero) 94%, transparent)); }
-  .practice-row:hover { padding-inline: 0; }
 }
 
 /* Carrossel de departamentos (Swiper) */
@@ -98,3 +113,4 @@
 }
 .swiper.departments-swiper .swiper-slide { height: auto; }
 .swiper.departments-swiper .swiper-pagination-bullet { border-radius: 0; }
+.dept-image-shade { background: linear-gradient(180deg, color-mix(in oklab, var(--surface-dark) 55%, transparent) 0%, transparent 35%, color-mix(in oklab, var(--surface-dark) 92%, transparent) 100%); }

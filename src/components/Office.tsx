@@ -1,43 +1,31 @@
-import { Clock, MapPin, Phone } from 'lucide-react'
-
-const office = {
-  address: 'SHS Quadra 6, Conjunto A, Bloco E, Sala 1201',
-  building: 'Complexo Brasil 21',
-  district: 'Asa Sul, Brasília – DF',
-  cep: '70316-000',
-  phone: '+55 (61) 3000-0000',
-  hours: 'Segunda a sexta, 9h às 18h',
-}
-
-const mapQuery = encodeURIComponent(`${office.building}, SHS Quadra 6, ${office.district}`)
-const mapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&z=16&output=embed`
-const mapLinkUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`
+import { ArrowUpRight, Clock, MapPin, Phone } from 'lucide-react'
+import { mapEmbedUrl, mapLinkUrl, office } from '../data/office'
 
 function Office() {
   return (
-    <section id="onde-estamos" className="border-t border-border py-20 sm:py-28 lg:py-36">
+    <section id="onde-estamos" className="border-t bg-paper py-24 sm:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-end">
+        <div className="grid gap-8 lg:grid-cols-[1.4fr_0.8fr] lg:items-end">
           <div>
-            <p className="eyebrow">Nosso escritório</p>
-            <h2 className="mt-6 max-w-xl font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">
-              Um espaço pensado para conversas decisivas.
+            <p className="eyebrow">Onde estamos</p>
+            <h2 className="mt-8 max-w-3xl font-display text-[clamp(2.5rem,5vw,4.25rem)] leading-[1.02]">
+              Um espaço pensado para conversas <em>decisivas.</em>
             </h2>
           </div>
-          <p className="max-w-xl text-base leading-8 text-muted-foreground lg:justify-self-end">
-            Atendimento presencial em Brasília e remoto para todo o Brasil. Agende uma reunião e
-            venha nos visitar.
+          <p className="max-w-md text-lg leading-8 text-muted-foreground lg:justify-self-end">
+            Atendimento presencial em Brasília e remoto para todo o Brasil. Agende uma reunião e venha nos
+            visitar.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-[minmax(280px,0.8fr)_1.6fr]">
-          <div className="order-last flex flex-col justify-between gap-8 border border-border p-6 sm:p-8 lg:order-first">
-            <dl className="space-y-7">
-              <div className="flex gap-4">
+        <div className="mt-16 grid border bg-background lg:grid-cols-[minmax(320px,0.8fr)_1.6fr]">
+          <div className="order-last flex flex-col justify-between gap-10 p-8 sm:p-10 lg:order-first">
+            <dl className="space-y-8">
+              <div className="flex gap-5">
                 <MapPin className="mt-1 size-5 shrink-0 text-brand" strokeWidth={1.4} />
                 <div>
-                  <dt className="eyebrow">Endereço</dt>
-                  <dd className="mt-2 text-sm leading-7">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Endereço</dt>
+                  <dd className="mt-2 leading-7">
                     {office.address}
                     <br />
                     {office.building} · {office.district}
@@ -46,18 +34,18 @@ function Office() {
                   </dd>
                 </div>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-5">
                 <Clock className="mt-1 size-5 shrink-0 text-brand" strokeWidth={1.4} />
                 <div>
-                  <dt className="eyebrow">Horário</dt>
-                  <dd className="mt-2 text-sm leading-7">{office.hours}</dd>
+                  <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Horário</dt>
+                  <dd className="mt-2 leading-7">{office.hours}</dd>
                 </div>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-5">
                 <Phone className="mt-1 size-5 shrink-0 text-brand" strokeWidth={1.4} />
                 <div>
-                  <dt className="eyebrow">Telefone</dt>
-                  <dd className="mt-2 text-sm leading-7">
+                  <dt className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">Telefone</dt>
+                  <dd className="mt-2 leading-7">
                     <a href={`tel:${office.phone.replace(/\D/g, '')}`}>{office.phone}</a>
                   </dd>
                 </div>
@@ -68,17 +56,17 @@ function Office() {
               href={mapLinkUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit items-center gap-3 border-b border-foreground pb-2 text-xs font-semibold uppercase"
+              className="btn btn-line w-full text-foreground sm:w-fit"
             >
-              Como chegar
+              Como chegar <ArrowUpRight className="size-4" />
             </a>
           </div>
 
-          <div className="border border-border">
+          <div className="border-b lg:border-b-0 lg:border-l">
             <iframe
               title="Mapa com a localização do escritório Antunes Veiga em Brasília"
               src={mapEmbedUrl}
-              className="block aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[420px]"
+              className="map-classic block aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[460px]"
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
