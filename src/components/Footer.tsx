@@ -1,67 +1,108 @@
-import { ArrowRight } from 'lucide-react'
-import { office } from '../data/office'
-
-const links = [
-  { href: '#escritorio', label: 'O escritório' },
-  { href: '#metodo', label: 'Método' },
-  { href: '#atuacao', label: 'Atuação' },
-  { href: '#onde-estamos', label: 'Onde estamos' },
-]
+import Logo from './Logo'
+import { brand, contact, locations, navLinks, partners, signature } from '../data/site'
 
 function Footer() {
   return (
-    <footer id="contato" className="bg-hero text-hero-foreground">
-      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
-        <div className="grid gap-12 border-b border-hero-line pb-20 lg:grid-cols-[1.4fr_0.6fr] lg:items-end">
+    <footer className="bg-navy-dark pt-16 text-mist/70">
+      <div className="container-page">
+        <div className="grid gap-12 border-b border-white/10 pb-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr_1fr]">
           <div>
-            <p className="eyebrow text-brand">Vamos conversar</p>
-            <h2 className="mt-8 max-w-3xl font-display text-[clamp(2.75rem,6vw,5.5rem)] leading-[1]">
-              Toda boa estratégia começa com a pergunta <em>certa.</em>
-            </h2>
+            <Logo size="sm" />
+            <p className="mt-6 font-serif text-lg leading-relaxed text-mist/80 italic">
+              {signature.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
           </div>
-          <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
-            <a href="mailto:contato@antunesveiga.adv.br" className="btn btn-gold">
-              Escrever para o escritório <ArrowRight className="size-4" />
-            </a>
-            <a href={`tel:${office.phone.replace(/\D/g, '')}`} className="btn btn-line text-hero-foreground">
-              {office.phone}
-            </a>
-          </div>
-        </div>
 
-        <div className="grid gap-10 py-14 sm:grid-cols-3">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">Antunes Veiga</p>
-            <p className="mt-4 max-w-xs text-sm leading-7 text-hero-muted">
-              Advocacia estratégica desde 1998. Atendimento presencial em Brasília e São Paulo, remoto em
-              todo o Brasil.
-            </p>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">Endereço</p>
-            <p className="mt-4 text-sm leading-7 text-hero-muted">
-              {office.address}
-              <br />
-              {office.district} · CEP {office.cep}
-            </p>
-          </div>
-          <nav aria-label="Rodapé">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">Navegação</p>
-            <ul className="mt-4 space-y-2 text-sm text-hero-muted">
-              {links.map(({ href, label }) => (
+          <nav aria-label="Navegação do rodapé">
+            <h2 className="eyebrow text-gold">Navegação</h2>
+            <ul className="mt-5 space-y-3">
+              {navLinks.map(({ href, label }) => (
                 <li key={href}>
-                  <a href={href} className="transition-colors hover:text-hero-foreground">
+                  <a
+                    href={href}
+                    className="text-[0.9rem] transition-colors duration-250 hover:text-gold"
+                  >
                     {label}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
+
+          <div>
+            <h2 className="eyebrow text-gold">Onde atendemos</h2>
+            <ul className="mt-5 space-y-4">
+              {locations.map((location) => (
+                <li key={location.city}>
+                  <p className="text-[0.9rem] text-white">{location.city}</p>
+                  <p className="mt-1 text-[0.85rem] leading-relaxed">
+                    {location.lines.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="eyebrow text-gold">Contato</h2>
+            <ul className="mt-5 space-y-3 text-[0.9rem]">
+              <li>
+                <a
+                  href={contact.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-250 hover:text-gold"
+                >
+                  WhatsApp {contact.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="transition-colors duration-250 hover:text-gold"
+                >
+                  {contact.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={contact.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors duration-250 hover:text-gold"
+                >
+                  Instagram {contact.instagram}
+                </a>
+              </li>
+            </ul>
+
+            <h2 className="eyebrow mt-8 text-gold">Advogados</h2>
+            <ul className="mt-5 space-y-4">
+              {partners.map((partner) => (
+                <li key={partner.name}>
+                  <p className="text-[0.9rem] text-white">{partner.name}</p>
+                  <p className="mt-1 text-[0.8rem]">{partner.oab}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-hero-line pt-8 text-xs text-hero-muted sm:flex-row sm:justify-between">
-          <p>© 2026 Antunes Veiga Advocacia</p>
-          <p>Conteúdo demonstrativo · Versão 1</p>
+        <div className="flex flex-col gap-2 py-8 text-[0.75rem] sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © 2026 {brand.fullName}. Todos os direitos reservados.
+          </p>
+          <p>
+            {brand.areas} · Manaus/AM · Palmas/TO
+          </p>
         </div>
       </div>
     </footer>

@@ -1,5 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#1f1a15"/>
-  <rect x="4" y="4" width="56" height="56" fill="none" stroke="#c9a46a" stroke-width="3"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="600" fill="#f6efe3">AV</text>
+  <defs>
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="8" x2="0" y2="60">
+      <stop offset="0" stop-color="#ECD08A"/>
+      <stop offset="0.55" stop-color="#C79A4A"/>
+      <stop offset="1" stop-color="#A47629"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="6" fill="#06243A"/>
+  <g transform="translate(3 1)">
+    <g fill="url(#g)" font-family="Georgia, 'Times New Roman', serif">
+      <text x="4" y="39" font-size="42">D</text>
+      <text x="17.5" y="58" font-size="46">V</text>
+    </g>
+    <g stroke="url(#g)" fill="none" stroke-linecap="round">
+      <path d="M48.5 15.5 V28.5" stroke-width="1.6"/>
+      <path d="M42.1 17.5 H54.9" stroke-width="1.4"/>
+      <path d="M40.1 21.6 Q42.1 23.8 44.1 21.6 Z M52.9 21.6 Q54.9 23.8 56.9 21.6 Z" fill="url(#g)" stroke-width="0.6"/>
+    </g>
+  </g>
 </svg>

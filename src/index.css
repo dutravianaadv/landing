@@ -1,116 +1,143 @@
 @import "tailwindcss";
 
 /*
- * Design system.
- *
- * O bloco @theme inline mapeia as variáveis CSS para utilitários do Tailwind
- * (ex.: --color-brand -> bg-brand, text-brand, border-brand).
- * Os valores reais ficam em :root, sempre em oklch.
+ * Design system (ver refac.md): editorial jurídico premium.
+ * Azul-marinho profundo + off-white quente + dourado envelhecido.
+ * Títulos em serif (Cormorant Garamond), textos em sans (Inter).
  */
 
 @theme inline {
-  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", Georgia, serif;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-border: var(--border);
-  --color-brand: var(--brand);
-  --color-brand-foreground: var(--brand-foreground);
-  --color-hero: var(--hero);
-  --color-hero-foreground: var(--hero-foreground);
-  --color-hero-muted: var(--hero-muted);
-  --color-hero-line: var(--hero-line);
-  --color-surface-dark: var(--surface-dark);
-  --color-surface-dark-foreground: var(--surface-dark-foreground);
-  --color-surface-dark-muted: var(--surface-dark-muted);
-  --color-dark-line: var(--dark-line);
-  --color-paper: var(--paper);
-  --ease-classic: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
+
+  --color-navy: var(--navy);
+  --color-navy-dark: var(--navy-dark);
+  --color-navy-light: var(--navy-light);
+
+  --color-gold: var(--gold);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-light: var(--gold-light);
+
+  --color-cream: var(--cream);
+  --color-cream-dark: var(--cream-dark);
+
+  --color-ink: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-mist: var(--text-light);
+
+  --radius-card: 4px;
+
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
 :root {
-  --background: oklch(0.965 0.012 82);
-  --foreground: oklch(0.215 0.015 67);
-  --muted-foreground: oklch(0.46 0.019 67);
-  --border: oklch(0.82 0.018 76);
-  --brand: oklch(0.71 0.09 77);
-  --brand-foreground: oklch(0.18 0.012 67);
-  --hero: oklch(0.15 0.014 58);
-  --hero-foreground: oklch(0.96 0.014 79);
-  --hero-muted: oklch(0.78 0.016 76);
-  --hero-line: oklch(0.96 0.014 79 / 20%);
-  --surface-dark: oklch(0.2 0.018 67);
-  --surface-dark-foreground: oklch(0.96 0.014 79);
-  --surface-dark-muted: oklch(0.72 0.015 74);
-  --dark-line: oklch(0.96 0.014 79 / 15%);
-  --paper: oklch(0.935 0.016 80);
+  --navy: #06243a;
+  --navy-dark: #041c2d;
+  --navy-light: #0b3048;
+
+  --gold: #c79a4a;
+  --gold-dark: #b88738;
+  --gold-light: #d8b66a;
+
+  --cream: #f7f4ed;
+  --cream-dark: #f1eee6;
+
+  --text-primary: #102235;
+  --text-secondary: #53606b;
+  --text-light: #e8edf0;
+
+  --hairline: rgb(10 35 55 / 0.1);
+  --hairline-light: rgb(232 237 240 / 0.16);
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--cream);
+    color: var(--text-primary);
     font-family: var(--font-sans);
-    letter-spacing: 0;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light;
   }
 
-  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-
-  /* Evita palavras soltas na última linha em telas estreitas */
   h1, h2, h3 { text-wrap: balance; }
   p, dd { text-wrap: pretty; }
 
   a, button { outline-offset: 4px; }
+  :focus-visible { outline: 1px solid var(--gold); }
+
+  ::selection { background-color: var(--gold); color: var(--navy); }
 }
 
 @layer components {
-  .font-display { font-family: var(--font-display); font-weight: 500; }
-  /* Palavra de destaque dos títulos: itálico dourado */
-  .font-display em { font-style: italic; color: var(--color-brand); }
-  .eyebrow { display: inline-flex; align-items: center; gap: 0.75rem; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--color-muted-foreground); }
-  .eyebrow::before { content: ""; width: 2rem; height: 1px; background-color: currentColor; opacity: 0.6; }
+  .container-page { margin-inline: auto; width: 100%; max-width: 1200px; padding-inline: 20px; }
+  @media (min-width: 640px) { .container-page { padding-inline: 32px; } }
+  @media (min-width: 1280px) { .container-page { padding-inline: 40px; } }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1rem 1.75rem; font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; transition: background-color 250ms var(--ease-classic), color 250ms var(--ease-classic), border-color 250ms var(--ease-classic); }
-  .btn-gold { background-color: var(--color-brand); color: var(--color-brand-foreground); }
-  .btn-gold:hover { background-color: color-mix(in oklab, var(--brand) 85%, white); }
-  .btn-line { border: 1px solid currentColor; }
-  .btn-line:hover { background-color: color-mix(in oklab, currentColor 8%, transparent); }
+  /* Respiro vertical proporcional à altura da tela: seções cabem no viewport sem sobrar vazio */
+  .section-y { padding-block: clamp(3.5rem, 11svh, 7.5rem); }
 
-  .map-classic { filter: grayscale(0.7) sepia(0.25) contrast(0.95); }
-  .nav-link { position: relative; padding-block: 0.5rem; transition: color 180ms ease; }
-  .nav-link:hover { color: var(--color-hero-foreground); }
-  .hero-shade { background: linear-gradient(90deg, color-mix(in oklab, var(--hero) 96%, transparent) 0%, color-mix(in oklab, var(--hero) 73%, transparent) 44%, color-mix(in oklab, var(--hero) 14%, transparent) 100%); }
+  /* Imagens de seção nunca passam de ~2/3 da altura visível */
+  .media-fit { max-height: 66svh; }
+
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+
+  /* Rótulos discretos: versalete espaçado, na cor do contexto */
+  .eyebrow { font-size: 0.6875rem; font-weight: 500; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.18em; }
+
+  /* Filete dourado que antecede os títulos */
+  .rule-gold { display: block; width: 48px; height: 1px; background-color: var(--gold); }
+
+  .title-display { font-family: var(--font-serif); font-weight: 500; line-height: 1.08; letter-spacing: -0.015em; }
+
+  /* Botões: primário dourado, secundário outline */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; border-radius: 2px; padding: 0.9rem 1.75rem; font-size: 0.75rem; font-weight: 500; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.14em; transition: background-color 250ms var(--ease-soft), color 250ms var(--ease-soft), border-color 250ms var(--ease-soft), transform 250ms var(--ease-soft); }
+  .btn:hover { transform: translateY(-1px); }
+
+  .btn-gold { background-color: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background-color: var(--gold-light); }
+
+  .btn-outline { border: 1px solid var(--gold); color: var(--navy); }
+  .btn-outline:hover { background-color: var(--gold); }
+
+  .btn-ghost-light { border: 1px solid rgb(232 237 240 / 0.35); color: var(--text-light); padding-block: calc(0.9rem - 1px); }
+  .btn-ghost-light:hover { background-color: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+  /* Superfícies: cartões discretos, cantos pouco arredondados, sombra mínima */
+  .surface { border: 1px solid var(--hairline); border-radius: 4px; background-color: #ffffff; }
+  .surface-dark { border: 1px solid var(--hairline-light); border-radius: 4px; background-color: rgb(255 255 255 / 0.04); }
+
+  /* Toque: amplia a área clicável de links de texto sem mexer no layout (mín. ~44px) */
+  @media (pointer: coarse) {
+    main a:not(.btn), footer a { position: relative; }
+    main a:not(.btn)::after, footer a::after { content: ""; position: absolute; inset: -12px -6px; }
+  }
+
+  .link-underline { background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-size: 100% 1px; background-repeat: no-repeat; transition: background-size 250ms var(--ease-soft); }
+  .link-underline:hover { background-size: 0% 1px; background-position: 100% 100%; }
+
+  /* Mapas do Google: tom quente (creme) no repouso, cor natural no hover */
+  .map-soft { filter: sepia(0.28) saturate(0.85) contrast(0.96); transition: filter 350ms var(--ease-soft); }
+  .map-soft:hover { filter: none; }
+}
+
+/* Entrada das seções: fade + deslocamento curto, uma vez só */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { animation: reveal-up 700ms var(--ease-soft) both; }
+  .reveal-delay-1 { animation-delay: 90ms; }
+  .reveal-delay-2 { animation-delay: 180ms; }
+  .reveal-delay-3 { animation-delay: 270ms; }
 }
 
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .animate-reveal { animation: reveal-up 900ms cubic-bezier(.2,.7,.2,1) both; }
-}
-
-@media (max-width: 639px) {
-  .hero-shade { background: linear-gradient(180deg, color-mix(in oklab, var(--hero) 60%, transparent), color-mix(in oklab, var(--hero) 94%, transparent)); }
-}
-
-/* Carrossel de departamentos (Swiper) */
-.swiper.departments-swiper {
-  --swiper-pagination-color: var(--brand);
-  --swiper-pagination-bullet-inactive-color: var(--surface-dark-foreground);
-  --swiper-pagination-bullet-inactive-opacity: 0.25;
-  --swiper-pagination-bullet-size: 6px;
-  --swiper-pagination-bullet-horizontal-gap: 5px;
-  --swiper-pagination-bottom: 0;
-  overflow: visible;
-  padding-bottom: 2.25rem;
-}
-.swiper.departments-swiper .swiper-slide { height: auto; }
-.swiper.departments-swiper .swiper-pagination-bullet { border-radius: 0; }
-.dept-image-shade { background: linear-gradient(180deg, color-mix(in oklab, var(--surface-dark) 55%, transparent) 0%, transparent 35%, color-mix(in oklab, var(--surface-dark) 92%, transparent) 100%); }

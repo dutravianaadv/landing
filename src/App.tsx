@@ -1,25 +1,43 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
-import About from './components/About'
-import Method from './components/Method'
-import Departments from './components/Departments'
-import Testimonial from './components/Testimonial'
-import Office from './components/Office'
+import Historia from './components/Historia'
+import Areas from './components/Areas'
+import Especializacoes from './components/Especializacoes'
+import Situacoes from './components/Situacoes'
+import Atuacao from './components/Atuacao'
+import Detalhamento from './components/Detalhamento'
+import Empresas from './components/Empresas'
+import Socios from './components/Socios'
+import Mapas from './components/Mapas'
+import Presenca from './components/Presenca'
+import ComoFunciona from './components/ComoFunciona'
+import Faq from './components/Faq'
+import CtaFinal from './components/CtaFinal'
 import Footer from './components/Footer'
+import WhatsappFloat from './components/WhatsappFloat'
 
 function App() {
   return (
-    <div className="min-h-screen overflow-x-clip bg-background text-foreground">
+    <div className="min-h-screen overflow-x-clip bg-cream text-ink">
       <Header />
       <main>
         <Hero />
-        <About />
-        <Method />
-        <Departments />
-        <Testimonial />
-        <Office />
+        <Historia />
+        <Areas />
+        <Especializacoes />
+        <Situacoes />
+        <Atuacao />
+        <Detalhamento />
+        <Empresas />
+        <Socios />
+        <Mapas />
+        <Presenca />
+        <ComoFunciona />
+        <Faq />
+        <CtaFinal />
       </main>
       <Footer />
+      <WhatsappFloat />
     </div>
   )
 }

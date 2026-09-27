@@ -1,63 +1,80 @@
-import { ArrowDown, ArrowRight } from 'lucide-react'
-import heroImage from '../assets/escritorio-hero.jpg'
-
-const stats = [
-  { value: '1998', label: 'Ano de fundação' },
-  { value: '5', label: 'Departamentos especializados' },
-  { value: 'DF · SP', label: 'Brasília e São Paulo' },
-]
+import { ArrowRight, MapPin } from 'lucide-react'
+import { brand, contact, partners } from '../data/site'
+import { images } from '../data/conteudo'
+import WhatsappIcon from './WhatsappIcon'
 
 function Hero() {
   return (
-    <section id="inicio" className="relative isolate flex min-h-svh flex-col bg-hero text-hero-foreground">
-      <img
-        src={heroImage}
-        alt="Interior contemporâneo de um escritório de advocacia em Brasília"
-        width={1600}
-        height={1000}
-        className="absolute inset-0 -z-10 size-full object-cover object-center"
-      />
-      <div className="hero-shade absolute inset-0 -z-10" />
+    <section id="inicio" className="flex min-h-svh items-center bg-navy pt-20">
+      <div className="container-page grid items-center gap-[clamp(2.5rem,6svh,4rem)] py-[clamp(2.5rem,7svh,5rem)] lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="reveal">
+          <p className="eyebrow text-gold">{brand.fullName}</p>
 
-      <div className="mx-auto flex w-full max-w-screen-2xl flex-1 flex-col justify-end px-5 pb-10 pt-32 sm:px-8 sm:pb-14 lg:px-14">
-        <div className="max-w-5xl animate-reveal">
-          <p className="eyebrow text-brand">Advocacia estratégica · Brasília</p>
-          <h1 className="mt-6 font-display text-[clamp(3rem,7.4vw,7rem)] leading-[0.95]">
-            Direito que antecipa o próximo <em>movimento.</em>
+          <h1 className="title-display mt-7 text-[clamp(2.25rem,5.2vw,3.5rem)] text-white">
+            Conhecimento jurídico{' '}
+            <br className="hidden sm:block" />
+            para orientar.
+            <br />
+            Estratégia para proteger.
           </h1>
-          <p className="mt-8 max-w-xl text-lg leading-8 text-hero-muted">
-            Inteligência jurídica, repertório e presença para decisões que não admitem improviso.
+
+          <p className="title-display mt-4 text-[clamp(1.5rem,3.4vw,2.125rem)] text-gold italic">
+            Atenção para cada história.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a href="#contato" className="btn btn-gold">
-              Agende uma conversa <ArrowRight className="size-4" />
+
+          <div className="mt-8 max-w-xl border-l border-gold/40 pl-5">
+            <p className="text-[0.95rem] leading-relaxed text-mist/75">
+              A {brand.name} Advogados Associados atua principalmente nas áreas de Direito
+              Previdenciário e Direito do Trabalho, oferecendo orientação jurídica para pessoas e
+              empresas.
+            </p>
+          </div>
+
+          <p className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-mist/60">
+            <MapPin className="size-4 text-gold" strokeWidth={1.25} />
+            Manaus/AM <span className="text-gold/60">•</span> Palmas/TO
+            <span className="block w-full sm:inline sm:w-auto">
+              Atendimento online em todo o Brasil
+            </span>
+          </p>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a
+              href={contact.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-gold"
+            >
+              Fale com nossa equipe
+              <WhatsappIcon />
             </a>
-            <a href="#atuacao" className="btn btn-line text-hero-foreground">
-              Conheça a atuação
+            <a href="#escritorio" className="btn btn-ghost-light">
+              Conheça o escritório
+              <ArrowRight className="size-4" strokeWidth={1.5} />
             </a>
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-[1fr_auto] items-end gap-6 border-t border-hero-line pt-6 lg:mt-20">
-          <dl className="grid max-w-3xl grid-cols-3 gap-4 sm:gap-10">
-            {stats.map(({ value, label }) => (
-              <div key={label}>
-                <dt className="sr-only">{label}</dt>
-                <dd className="whitespace-nowrap font-display text-[clamp(1.5rem,3.5vw,2.75rem)] leading-none">
-                  {value}
-                </dd>
-                <dd className="mt-2 text-xs leading-snug text-hero-muted sm:text-sm">{label}</dd>
+        <figure className="reveal reveal-delay-1 relative">
+          <div className="overflow-hidden bg-navy-dark">
+            <img
+              src={images.hero}
+              alt="Eduardo César Dutra e Washington Luiz Viana, sócios da Dutra & Viana Advogados Associados"
+              width={1096}
+              height={1600}
+              className="aspect-4/5 max-h-[calc(100svh-15rem)] min-h-[320px] w-full object-cover object-[center_18%] transition-transform duration-700 ease-soft hover:scale-102"
+            />
+          </div>
+
+          <figcaption className="mt-4 grid grid-cols-2 gap-4 border-t border-white/15 pt-4">
+            {partners.map((partner) => (
+              <div key={partner.name}>
+                <p className="text-[0.8rem] leading-snug font-medium text-mist">{partner.name}</p>
+                <p className="mt-1 text-[0.7rem] tracking-[0.06em] text-white/45">{partner.oab}</p>
               </div>
             ))}
-          </dl>
-          <a
-            href="#escritorio"
-            aria-label="Rolar para conhecer o escritório"
-            className="hidden size-14 place-items-center border border-hero-line text-brand transition-colors hover:border-brand md:grid"
-          >
-            <ArrowDown className="size-5" strokeWidth={1.5} />
-          </a>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
   )

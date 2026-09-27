@@ -1,70 +1,57 @@
-# Function — Style Reference
-> warm apothecary journal on parchment
+# Sequel — Style Reference
+> Private screening after dark — a single warm lamp in an otherwise unlit cinema.
 
-**Theme:** light
+**Theme:** dark
 
 Source measurements are normalized; roles and recommendations are interpreted. Font summary lists are independent, not paired by position. HTML examples are reconstructions, not source components.
 
-Function reads like a premium editorial wellness journal printed on warm cream paper: a serif display voice (Financier) delivers headlines with quiet authority while a humanist sans (Ftbase) carries the body language of a calm clinician. The canvas is never sterile white — every surface sits in a warm parchment range from #fef9ef to #f5eee1, and a single terracotta accent (#b05a36) punctuates actions, badges, and icon strokes like a wax seal on an apothecary label. Components are rounded generously (24px cards, 40px buttons, 9999px pills) but never feel toy-like because shadows are used sparingly and only at two elevations. Italic serif words mixed with roman serif in the same headline create a typographic rhythm that's the system's strongest signature — health tech that trusts the reader to slow down.
+Sequel is a private screening after dark — a pitch-black canvas hosting cinematic, warm-toned portraiture and a single warm off-white accent that acts like lamplight in an otherwise unlit room. The system is strictly achromatic (0% colorfulness): pure black, warm cream, and three neutral grays carry the entire visual language, and the absence of chromatic color is itself the brand position — money this old doesn't need to shout. Typography is editorial and restrained, pairing a custom geometric sans (VisueltPro) with a display serif (Bradford) reserved for the aspirational word "legacy" set in italic. Weight 300 headlines whisper instead of declare; uppercase tracked labels (0.05–0.08em) do the typographic work most sites assign to color. Components are glassy and precise — pill controls, frosted chips with an inner top highlight, flat #202020 cards that sit one step above the void — and the only shadows in the system are functional: a soft drop under the cream button and a rim-lit glass effect on badges.
 
 ## Tokens — Colors
 
 | Name | Value | Token | Role |
 |------|-------|-------|------|
-| Terracotta Seal | `linear-gradient(116deg, rgb(176, 90, 54), rgb(212, 166, 142))` | `--color-terracotta-seal` | Primary action buttons, eyebrow labels, active states, icon strokes, key badges — a single warm rust against cream paper, evokes clinical warmth without medical sterility; Subtle hero overlay gradient from terracotta to a lighter tan — used on hero photo treatment and decorative seals, not on UI surfaces |
-| Parchment | `#fef9ef` | `--color-parchment` | Page canvas and primary surface — never use pure white; this warm off-white is the system's base tone |
-| Aged Paper | `#f5eee1` | `--color-aged-paper` | Card and panel surfaces, subtle wash backgrounds — one step deeper than the canvas to create soft elevation without shadows |
-| Warm Taupe | `#d1c9bf` | `--color-warm-taupe` | Hairline borders, divider lines, card outlines — replaces cold gray with a tone that belongs to the cream family |
-| Ink | `#2a2b2f` | `--color-ink` | Primary text, heading fills, strong borders — near-black with a barely-warm cast to harmonize with parchment rather than fight it |
-| Charcoal | `#333333` | `--color-charcoal` | Secondary text, body copy, default icon fills, structural borders — slightly softer than Ink for reading-length passages |
-| Graphite | `#515151` | `--color-graphite` | Muted helper text, captions, secondary metadata — never below 14px without sufficient weight to maintain AAA contrast on parchment |
-| Ash | `#808988` | `--color-ash` | Input borders, disabled state outlines, placeholder text — the only cool-leaning neutral, used only on form elements |
-| Pure Black | `#000000` | `--color-pure-black` | SVG fill default, logo mark — reserve for vector illustration, never use as text or background |
+| Void Black | `#000000` | `--color-void-black` | Page canvas, nav background, icon fill — the default state of the page; everything is built ON the void, not against it |
+| Pure White | `#ffffff` | `--color-pure-white` | Primary text, heading fill, ghost button stroke, icon stroke — the reading and structural color |
+| Charcoal | `#202020` | `--color-charcoal` | Elevated card surface, secondary panels — the single quiet step above the canvas that implies elevation without shadow |
+| Graphite | `#333333` | `--color-graphite` | Hairline borders, badge outlines, subtle dividers — sits between surface and text, never decorative |
+| Lamp Cream | `#f5f5f0` | `--color-lamp-cream` | Primary filled action button background — the only chromatic-temperature accent; warm off-white reads as lamplight against pure black and keeps CTAs from feeling sterile |
+| Smoke | `#999999` | `--color-smoke` | Light text on dark surfaces, inverse labels, and high-contrast captions. Do not promote it to the primary CTA color |
 
 ## Tokens — Typography
 
-### Financier Display — Display and editorial headlines — weight 400 for roman, weight 300 for italic accent words within the same headline (e.g. 'Testing is easy' pairs roman with italic). The mix of roman + italic serif in one line is the system's most distinctive typographic move. Substitute: GT Super, Domaine Display, Tiempos Headline · `--font-financier-display`
-- **Substitute:** GT Super Display, Domaine Display, or Tiempos Headline
-- **Weights:** 300, 400
-- **Sizes:** 34, 45, 64, 80, 88px
-- **Line height:** 0.90–1.15
-- **Letter spacing:** normal
-- **Role:** Display and editorial headlines — weight 400 for roman, weight 300 for italic accent words within the same headline (e.g. 'Testing is easy' pairs roman with italic). The mix of roman + italic serif in one line is the system's most distinctive typographic move. Substitute: GT Super, Domaine Display, Tiempos Headline
+### VisueltPro — Primary workhorse across all contexts: body (16px/400), nav links (15–16px/500), uppercase labels (10–13px/400–500 with 0.03–0.08em tracking), and narrative headlines (30–54px/300). The whisper-thin 300 weight at 54px is the signature move — most premium sites use bold or serif italic for hero text; Sequel uses hairline sans and lets size + negative tracking do the work. · `--font-visueltpro`
+- **Substitute:** Inter, Satoshi, General Sans
+- **Weights:** 300, 400, 500
+- **Sizes:** 10px, 11px, 12px, 13px, 14px, 15px, 16px, 18px, 20px, 21px, 30px, 32px, 54px, 57px, 115px, 128px
+- **Line height:** 1.0–1.5
+- **Letter spacing:** -0.05em at 57px and 128px display sizes; -0.025em at 30px subheadings; +0.08em at 10px caption; +0.05em at 11–12px labels; +0.03em at 13px small caps
+- **OpenType features:** `"ss01" on, "cv11" on`
+- **Role:** Primary workhorse across all contexts: body (16px/400), nav links (15–16px/500), uppercase labels (10–13px/400–500 with 0.03–0.08em tracking), and narrative headlines (30–54px/300). The whisper-thin 300 weight at 54px is the signature move — most premium sites use bold or serif italic for hero text; Sequel uses hairline sans and lets size + negative tracking do the work.
 
-### Ftbase — Body, navigation, buttons, UI labels, and all interface text. Weight 300 is used for hero subhead and large descriptive passages; weight 400 for body; weight 600 for button labels and strong UI; weight 700 reserved for emphasis. The consistent -0.023em tracking pulls the type into a tight, confident block that contrasts the generous serif spacing. Substitute: Inter, Söhne, or Untitled Sans · `--font-ftbase`
-- **Substitute:** Inter, Söhne, or Untitled Sans
-- **Weights:** 300, 400, 600, 700
-- **Sizes:** 12, 14, 16, 18, 20, 24px
-- **Line height:** 1.20–1.50
-- **Letter spacing:** -0.023em (≈ -0.28px at 12px, -0.37px at 16px, -0.55px at 24px)
-- **Role:** Body, navigation, buttons, UI labels, and all interface text. Weight 300 is used for hero subhead and large descriptive passages; weight 400 for body; weight 600 for button labels and strong UI; weight 700 reserved for emphasis. The consistent -0.023em tracking pulls the type into a tight, confident block that contrasts the generous serif spacing. Substitute: Inter, Söhne, or Untitled Sans
-
-### Fragment mono — Tiny all-caps labels in badge and eyebrow contexts — monospace gives a clinical, data-precise feel for markers like 'HSA/FSA Eligible'. Use sparingly; Ftbase caps at 600+ serve most label needs · `--font-fragment-mono`
-- **Substitute:** JetBrains Mono or IBM Plex Mono
-- **Weights:** 400
-- **Sizes:** 11px
-- **Line height:** 1.00
-- **Letter spacing:** normal
-- **Role:** Tiny all-caps labels in badge and eyebrow contexts — monospace gives a clinical, data-precise feel for markers like 'HSA/FSA Eligible'. Use sparingly; Ftbase caps at 600+ serve most label needs
+### Bradford — Display serif reserved exclusively for the aspirational/poetic word in a headline — e.g. the italic "legacy" inside "Your legacy, made." Appears at display sizes only (57–128px) and only in italic, never as running text. Creates the editorial poetry that distinguishes a family-office brand from a VC. · `--font-bradford`
+- **Substitute:** Canela, Tiempos Headline, GT Super
+- **Weights:** 500
+- **Sizes:** 32px, 57px, 128px
+- **Line height:** 1.0–1.2
+- **Letter spacing:** -0.05em at 128px, -0.025em at 57px
+- **Role:** Display serif reserved exclusively for the aspirational/poetic word in a headline — e.g. the italic "legacy" inside "Your legacy, made." Appears at display sizes only (57–128px) and only in italic, never as running text. Creates the editorial poetry that distinguishes a family-office brand from a VC.
 
 ### Type Scale
 
 | Role | Family | Weight | Size | Line Height | Letter Spacing | Token |
 |------|--------|--------|------|-------------|----------------|-------|
-| eyebrow | — | — | 12px | 1.4 | -0.28px | `--text-eyebrow` |
-| body-sm | — | — | 14px | 1.5 | -0.32px | `--text-body-sm` |
-| body | — | — | 16px | 1.5 | -0.37px | `--text-body` |
-| body-lg | — | — | 18px | 1.4 | -0.41px | `--text-body-lg` |
-| subheading | — | — | 20px | 1.3 | -0.46px | `--text-subheading` |
-| heading | — | — | 34px | 1.15 | — | `--text-heading` |
-| heading-lg | — | — | 45px | 1.1 | — | `--text-heading-lg` |
-| display | — | — | 64px | 1 | — | `--text-display` |
-| hero | — | — | 80px | 0.95 | — | `--text-hero` |
-| display-xl | — | — | 88px | 0.9 | — | `--text-display-xl` |
+| label-sm | — | — | 11px | 1.5 | 0.55px | `--text-label-sm` |
+| body | — | — | 16px | 1.5 | 0px | `--text-body` |
+| body-lg | — | — | 20px | 1.5 | 0px | `--text-body-lg` |
+| subheading | — | — | 30px | 1.2 | -0.75px | `--text-subheading` |
+| heading | — | — | 54px | 1.2 | 0px | `--text-heading` |
+| heading-lg | — | — | 57px | 1 | -2.85px | `--text-heading-lg` |
+| display | — | — | 128px | 1 | -3.2px | `--text-display` |
 
 ## Tokens — Spacing & Shapes
 
-**Base unit:** 8px
+**Base unit:** 4px
 
 **Density:** comfortable
 
@@ -72,188 +59,178 @@ Function reads like a premium editorial wellness journal printed on warm cream p
 
 | Name | Value | Token |
 |------|-------|-------|
+| 4 | 4px | `--spacing-4` |
 | 8 | 8px | `--spacing-8` |
+| 12 | 12px | `--spacing-12` |
 | 16 | 16px | `--spacing-16` |
+| 20 | 20px | `--spacing-20` |
 | 24 | 24px | `--spacing-24` |
+| 28 | 28px | `--spacing-28` |
 | 32 | 32px | `--spacing-32` |
 | 40 | 40px | `--spacing-40` |
-| 48 | 48px | `--spacing-48` |
-| 56 | 56px | `--spacing-56` |
 | 64 | 64px | `--spacing-64` |
 | 80 | 80px | `--spacing-80` |
-| 240 | 240px | `--spacing-240` |
+| 96 | 96px | `--spacing-96` |
 
 ### Border Radius
 
 | Element | Value |
 |---------|-------|
-| nav | 12px |
-| tags | 9999px |
-| cards | 24px |
-| pills | 9999px |
-| inputs | 9999px |
-| buttons | 40px |
+| cards | 10px |
+| badges | 9999px |
+| inputs | 0px |
+| buttons | 9999px |
+| playButton | 50% |
 
 ### Shadows
 
 | Name | Value | Token |
 |------|-------|-------|
-| lg | `rgba(0, 0, 0, 0.15) 0px 0px 20px 0px` | `--shadow-lg` |
-| xl | `rgba(42, 43, 47, 0.1) 12px 32px 80px 0px` | `--shadow-xl` |
+| xl | `rgba(0, 0, 0, 0.35) 0px 10px 30px 0px, rgba(255, 255, 255...` | `--shadow-xl` |
+| lg | `rgba(0, 0, 0, 0.15) 0px 4px 20px 0px` | `--shadow-lg` |
 
 ### Layout
 
-- **Page max-width:** 1280px
-- **Section gap:** 64-96px
-- **Card padding:** 24-32px
+- **Page max-width:** 1200px
+- **Section gap:** 96-120px
+- **Card padding:** 0px
 - **Element gap:** 16px
 
 ## Components
 
-### Primary CTA Button
-**Role:** Main conversion action — 'Start testing', 'Get started'
+### Primary Filled Pill Button
+**Role:** The single primary action — used for "Build the future", "For members", "For founders" in nav and CTAs.
 
-Filled terracotta (#b05a36) background, white text in Ftbase 600 at 16px, padding 12px 24px, border-radius 40px. No border, no shadow. The pill-rounded shape is a signature — buttons are never rectangular.
+Background #f5f5f0, text #000000, 9999px border-radius, 0px vertical / 24px horizontal padding, 16px VisueltPro weight 500. Optional drop shadow rgba(0,0,0,0.15) 0px 4px 20px lifts it off the black canvas. The warm cream against pure black is the only filled button treatment in the system.
 
-### Outlined Secondary Button
-**Role:** Supporting action — 'See how it works', 'Learn more'
+### Ghost Outline Pill Button
+**Role:** Secondary action or paired navigation control.
 
-Transparent background, 1.5px terracotta (#b05a36) border, terracotta text in Ftbase 600 at 16px, padding 12px 24px, border-radius 40px. Sits at the same height as the primary CTA, never subordinate in size.
+Background transparent, 1px #ffffff border, text #ffffff, 9999px border-radius, 0px vertical / 20px horizontal padding, 16px VisueltPro weight 500. Used when a second action sits beside a primary cream button or when the action should recede into the dark canvas.
 
-### Ghost Text Button
-**Role:** Nav links, low-priority actions, 'Log in'
+### Frosted Glass Badge
+**Role:** Category labels on media cards — "Founders", "Athletes, Artists & Entrepreneurs", "Series A", "Seed".
 
-No background, no border, Ink (#2a2b2f) text in Ftbase 400-600 at 14-16px, padding 8px 12px. Hover state may add a subtle aged-paper (#f5eee1) background wash.
+Background rgba(200,200,200,0.1) with backdrop-filter blur(20px) saturate(1.4), text #ffffff, 9999px border-radius, 8px vertical / 16px horizontal padding, 11px VisueltPro weight 500 uppercase with +0.05em letter-spacing. Wrapped in a two-layer shadow: outer rgba(0,0,0,0.35) 0px 10px 30px plus inner inset rgba(255,255,255,0.08) 0px 1px 0px — the inner white edge is what makes it read as glass catching imaginary light, not a flat translucent chip.
 
-### Announcement Bar
-**Role:** Top-of-page promotional message — 'Use your HSA/FSA funds'
+### Elevated Card
+**Role:** Container for content blocks that need to sit one step above the void.
 
-Full-width terracotta (#b05a36) background, white text centered in Ftbase 400 at 14px, padding 8px 16px. Underlined link in white sits inline with the message. Sticky to the top of the viewport.
+Background #202020, 10px border-radius, no shadow, no border. Padding is handled by internal content, not the card itself. The single tone shift from #000 to #202020 implies elevation without a drop shadow — adding a shadow would break the flat cinematic feel.
 
-### Primary Navigation Bar
-**Role:** Site-wide navigation
+### Cinematic Media Card
+**Role:** Founder portraits, member stories, hero imagery.
 
-White or parchment (#fef9ef) background, 64-72px tall, logo mark left (terracotta swatch + 'Function' wordmark in Ink), center nav links in Ftbase 400 at 14-16px separated by 24-32px gaps, right side holds Ghost 'Log in' + Primary CTA + search icon + hamburger. Sticky on scroll with a subtle bottom hairline in Warm Taupe (#d1c9bf).
+Background transparent, 10px border-radius, no shadow, no internal padding. Contains a full-bleed photograph with text overlay anchored bottom-left and an optional frosted glass badge anchored top-right. Photos are warm-toned, natural-light documentary style; text sits at 16–21px over a subtle bottom gradient scrim (rgba(0,0,0,0.4) to transparent).
 
-### Numbered Step Card
-**Role:** How-it-works feature step ('01', '02', '03')
+### Video Play Button
+**Role:** The "Watch the film" call-to-action in the hero.
 
-Aged Paper (#f5eee1) background, 24px border-radius, padding 40px 32px, no border. Step number ('01') in terracotta at 14px Ftbase 600 eyebrow style. Title in Financier Display 34px, descriptive subtext in Ftbase 400 at 16px in Charcoal. May include an inline illustration or micro-UI preview (calendar, chart) in the lower half.
+Circular 50% radius, 1px #ffffff border, transparent or rgba(255,255,255,0.08) background, contains a small play triangle and "Watch the film" label at 13px VisueltPro weight 400 uppercase tracked 0.03em. Sits as a floating glass element bottom-right of the hero, never inside a card.
 
-### Doctor Testimonial Card
-**Role:** Social proof with credentialed endorsement
+### Section Display Heading
+**Role:** The signature headline pattern — "Your legacy, made." or "The digital family office investing in founders…"
 
-Inline horizontal layout on parchment canvas, no card chrome. Circular avatar 48-56px, quote in Financier Display 20-24px italic in Ink, attribution in Ftbase 600 at 14px in Ink, credential line in Ftbase 400 at 14px in Graphite.
+VisueltPro weight 300 or 500 at 54–128px, #ffffff, line-height 1.0–1.2, letter-spacing -0.05em at 57px+. Headlines mix weight 300 prose with an italic Bradford serif accent for the emotional keyword ("legacy"). Never set in all-caps, never decorated with gradients or color.
 
-### Hero Stat Block
-**Role:** Key metric in hero or feature sections — '160+ lab tests', '$1 per day'
+### Italic Serif Accent Word
+**Role:** The single emotional/payoff word inside a display headline.
 
-Vertical stack: large metric in Financier Display 34-45px in Ink, sub-label in Ftbase 400 at 14px in Graphite below. Separated from adjacent stats by 1px vertical Warm Taupe divider.
+Bradford italic, 500 weight, same size as the surrounding VisueltPro, #ffffff. Always italic, always lowercase, always the word carrying the brand's emotional claim (currently "legacy"). Sits inline — never on its own line.
 
-### Eyebrow Label
-**Role:** Section pre-title — 'HSA/FSA Eligible', 'Step 01'
+### Top Navigation Bar
+**Role:** Persistent minimal header — logo left, 3 text links center, 1 pill CTA right.
 
-All caps Ftbase 600 at 12px in Charcoal or terracotta, letter-spacing tight at -0.28px. Sits 8-12px above the section heading.
+Transparent background over the hero, switches to #000000 on scroll. Logo is the custom "sequel" wordmark with a four-bar mark (||||) suggesting sound-wave/equalizer. Nav links (Founders, Membership, Stories) at 15px VisueltPro weight 500, white, no underline, 16px element gap. Right-side CTA is the cream filled pill button. 0px border, no shadow, sits at the very top edge of the viewport.
 
-### Disease Tag
-**Role:** Inline condition marker — 'Prostate cancer', 'Anemia'
+### Section Heading Pair
+**Role:** A reusable two-line headline block: line 1 sets context in VisueltPro, line 2 carries the italic serif payoff.
 
-No background, no border. Text in Ftbase 400 at 14px in Charcoal, separated from siblings by a terracotta bullet '·' with 16px horizontal padding. Wraps in a horizontal flow with 8px row gap.
+First line: VisueltPro 54px weight 300 or 57px weight 500, white, -0.05em tracking. Second line: same VisueltPro sentence with one word swapped to Bradford italic at the same size. Both lines left-aligned, anchored to a 1200px content column with 24-48px gap between lines. The pattern is "The [noun] [verb] [preposition] [italic-serif-payoff]".
 
-### Bar Chart Widget
-**Role:** Data visualization in feature cards and results previews
+### Hero Gradient Overlay
+**Role:** Implicit scrim behind hero text — not a decorative gradient, a readability layer.
 
-Terracotta (#b05a36) bars on parchment background, 1px Warm Taupe axis lines, values labeled in Ftbase 400 at 12px in Graphite. No grid background. Bar corners are square (2px radius) — deliberately not rounded to contrast with the pill-shaped UI.
-
-### Input Field
-**Role:** Form input — search, email, date
-
-Parchment background, 1px Ash (#808988) border, 9999px border-radius (fully pill-shaped), padding 12px 20px, Ftbase 400 at 16px in Ink. Focus ring: 0 0 0 3px rgba(176, 90, 54, 0.2). Placeholder in Graphite.
-
-### Search Icon Button
-**Role:** Toggle search overlay
-
-40px circular, no background, Ink stroke icon at 20px. Hover: Aged Paper (#f5eee1) background fill. Subtle outer glow shadow when active.
-
-### Calendar Picker Widget
-**Role:** Date selection inside step cards
-
-Parchment background with very faint Warm Taupe dividers, day labels (TUE, WED…) in Ftbase 400 at 10-11px in Graphite, day numbers in Ftbase 400 at 14px in Ink. Active day: terracotta text with a subtle terracotta underline. No card chrome — sits flat within the step card.
+Linear gradient from rgba(0,0,0,0.0) at top to rgba(0,0,0,0.55) at bottom across the bottom 40% of the hero image. Ensures headline text contrast over photography without darkening the full frame. The only gradient in the system.
 
 ## Do's and Don'ts
 
 ### Do
-- Use Financier Display for all editorial headlines, always pairing roman and italic weights within the same line to create the signature typographic rhythm
-- Set body and UI text in Ftbase with the global -0.023em tracking, never override it per element
-- Default to the cream surface stack (Parchment → Aged Paper → Taupe Outline) for elevation before reaching for shadows
-- Apply the 40px border-radius to all buttons and the 24px radius to all cards — rectangular shapes break the system's identity
-- Reserve #b05a36 for exactly three uses: primary CTAs, eyebrow labels, and active/selected states — never as body text or large surface fills
-- Use the terracotta bullet '·' with 16px horizontal spacing when listing inline items like diseases or categories
-- Keep hero photography warm-toned with a dark overlay so headlines in white or parchment remain legible
+- Use #f5f5f0 exclusively for primary filled buttons — never introduce chromatic accents, even for hover states
+- Set all buttons, badges, and chips to 9999px border-radius; set all cards and image containers to 10px
+- Apply weight 300 to narrative headlines at 54px and weight 500 to display headlines at 57–128px — never use bold (700+)
+- Apply uppercase + positive letter-spacing (0.05–0.08em) to all label, badge, and metadata text
+- Apply -0.05em letter-spacing to all display text at 57px and above
+- Keep the page canvas at pure #000000 — never lighten the background or add a tint
+- Use #202020 for card surfaces to imply elevation through tone, not shadow
 
 ### Don't
-- Never use pure white (#ffffff) as a background — it kills the parchment warmth that defines the brand
-- Don't set body text in anything other than Ftbase; the serif is for editorial headlines only
-- Don't use small sharp drop shadows; elevation must come from color stepping or the two approved shadow recipes
-- Don't apply the terracotta to large background areas, decorative blocks, or text over 24px — it overwhelms when undiluted
-- Avoid rectangular buttons or square card corners; the rounded shape family (40px / 24px / 9999px) is non-negotiable
-- Don't introduce a second accent color — the system is monochromatic warm with one rust accent, and a second hue breaks the apothecary mood
-- Don't use the -0.023em tracking on the serif Financier Display — it belongs only to Ftbase
+- Never use a chromatic color anywhere in the interface — the system is 0% colorfulness by design
+- Never apply a drop shadow to cards, content surfaces, or images — only to the cream button and glass badges
+- Never use sharp corners (0px radius) on buttons, badges, or chips — pill (9999px) or 10px only
+- Never set body text below 16px; never set a label below 10px
+- Never use a heading weight above 500 or below 300
+- Never use 1px solid #fff for borders or dividers — use #333333 or glass effects only
+- Never place text directly on raw photography without a bottom gradient scrim for contrast
 
 ## Surfaces
 
 | Level | Name | Value | Purpose |
 |-------|------|-------|---------|
-| 0 | Parchment Canvas | `#fef9ef` | Page background — warm cream replaces pure white |
-| 1 | Aged Paper | `#f5eee1` | Card and panel surfaces — soft step up from canvas |
-| 2 | Taupe Outline | `#d1c9bf` | Bordered containers and dividers — never use shadow for primary elevation |
-| 3 | Terracotta Seal | `#b05a36` | Active/elevated interactive states and hero overlays |
+| 0 | Void | `#000000` | Page canvas, hero background, nav background |
+| 1 | Charcoal | `#202020` | Elevated card surface — single quiet elevation step |
+| 2 | Graphite | `#333333` | Hairline borders, badge outlines |
+| 3 | Lamp Cream | `#f5f5f0` | Primary action surface — the only non-neutral surface tone |
 
 ## Elevation
 
-- **Floating card / modal:** `rgba(42, 43, 47, 0.1) 12px 32px 80px 0px`
-- **Subtle UI glow (search, inputs):** `rgba(0, 0, 0, 0.15) 0px 0px 20px 0px`
+- **Primary Filled Pill Button:** `rgba(0, 0, 0, 0.15) 0px 4px 20px 0px`
+- **Frosted Glass Badge:** `rgba(0, 0, 0, 0.35) 0px 10px 30px 0px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset`
 
 ## Imagery
 
-Photography is warm-toned, cinematic, and human: golden-hour running silhouettes, organic outdoor movement, moody earth-and-sky palettes. Images are full-bleed in the hero with a dark warm overlay (~60% opacity) to keep headline text legible; in lower sections they are contained with 24px radius. Illustrations are minimal — the system favors real photography and small inline UI previews (calendars, bar charts) over decorative illustration. Icons are outlined with a 1.5-2px stroke in Ink or terracotta, never filled, never multicolor. No product screenshots; the 'product' is implied through micro-UI vignettes inside cards.
+Cinematic documentary-style photography dominates — warm-toned, natural-light portraits of founders, athletes, and artists in their working environments (unrolling blueprints at a wooden table, recording in a vocal booth, gazing through office windows). Images are treated as full-bleed hero stills or 10px-radius card containers, never cropped to product-spec tightness. Color treatment is warm-neutral, slightly desaturated, evoking 35mm film stock with shallow depth of field. No illustrations, no product screenshots, no 3D renders, no icon sets. The mood is intimate and observational — these are people building things in real spaces, not lifestyle stock photography. The custom logo wordmark "sequel" uses a four vertical-bar mark (||||) that reads as a sound wave or equalizer, hinting at the brand's audio/film DNA.
 
 ## Layout
 
-Max-width 1280px centered with 24-40px outer page padding. The hero is full-bleed photography with centered or left-aligned serif headline at 80-88px. Below the hero, sections alternate between Parchment (#fef9ef) and Aged Paper (#f5eee1) in a slow rhythm separated by 64-96px vertical gaps — not a strict checkerboard, but a gentle tonal cadence. Content is typically 3-column card grids for features, centered stacks for testimonials, and inline horizontal flows for disease/category lists. Navigation is a single sticky top bar; no sidebar, no mega-menu. Density is comfortable — cards breathe with 40px internal padding, and whitespace is treated as a design material rather than a gap filler.
+Full-bleed dark canvas with content centered to a 1200px max-width column. The hero is a full-viewport cinematic still with a single display headline anchored bottom-left and a small glass play button anchored bottom-right — no nav-bar fold, no above-the-fold content block, the photograph IS the fold. Below the hero, sections alternate between pure black voids and #202020 card surfaces, with 96–120px vertical breathing room between sections. Content is arranged in 2-column card grids (founder stories, member spotlights) with 16-24px gaps. Section headings are centered or left-aligned depending on rhythm, never justified. Navigation is a minimal top bar: logo left, three text links center, single cream pill CTA right — no sidebar, no mega-menu, no search. The footer closes with a single display headline ("Your legacy, made.") and a sparse row of links.
 
 ## Agent Prompt Guide
 
-## Quick Color Reference
-- text: #2a2b2f (Ink)
-- background: #fef9ef (Parchment)
-- border: #d1c9bf (Warm Taupe)
-- accent: #b05a36 (Terracotta Seal)
-- card surface: #f5eee1 (Aged Paper)
-- primary action: #b05a36 (filled action)
+**Quick Color Reference**
+- text: #ffffff
+- background: #000000
+- border: #333333
+- accent: #f5f5f0
+- primary action: #f5f5f0 (filled action)
 
-## Example Component Prompts
+**Example Component Prompts**
 
-**1. Hero with editorial headline:** Full-bleed dark warm-toned photo background with 60% dark overlay. Parchment (#fef9ef) eyebrow at 12px Ftbase 600 weight, letter-spacing -0.28px. Headline at 80px Financier Display weight 400, color #fef9ef, with the last word in weight 300 italic. Subtext at 18px Ftbase 300 weight, #fef9ef at 80% opacity. Primary CTA: #b05a36 background, white text at 16px Ftbase 600, padding 12px 24px, 40px radius.
+1. *Create a primary CTA button*: 9999px border-radius, background #f5f5f0, text #000000, padding 0px 24px, font 16px VisueltPro weight 500, optional drop shadow rgba(0,0,0,0.15) 0px 4px 20px. Label the text in sentence case.
 
-**2. Numbered step card:** Aged Paper (#f5eee1) background, 24px border-radius, 40px padding. Step number '01' in 14px Ftbase 600, color #b05a36. Title in 34px Financier Display weight 400, color #2a2b2f. Body text in 16px Ftbase 400, color #333333, line-height 1.5. Optional inline calendar or chart in the lower half.
+2. *Create a frosted glass category badge*: 9999px border-radius, background rgba(200,200,200,0.1) with backdrop-filter blur(20px) saturate(1.4), text #ffffff uppercase 11px VisueltPro weight 500 with +0.05em letter-spacing, padding 8px 16px. Add the two-layer shadow: outer rgba(0,0,0,0.35) 0px 10px 30px + inner inset rgba(255,255,255,0.08) 0px 1px 0px.
 
-**3. Doctor testimonial row:** No card chrome, sits directly on Parchment. Circular avatar 48px. Quote in 20px Financier Display weight 300 italic, color #2a2b2f. Name in 14px Ftbase 600, color #2a2b2f. Credential in 14px Ftbase 400, color #515151. Max-width 720px, left-aligned.
+3. *Create a hero section with display headline*: Full-bleed background image with a bottom gradient overlay (rgba(0,0,0,0) to rgba(0,0,0,0.55) across the bottom 40%). Headline: VisueltPro 128px weight 500, #ffffff, letter-spacing -3.2px, line-height 1.0. Swap the emotional keyword (e.g. "legacy") to Bradford italic at the same size. Anchor the headline bottom-left of the 1200px content column.
 
-**4. Disease tag list:** Horizontal flow with 16px column gap. Each item: 14px Ftbase 400, color #333333. Separator between items is a terracotta (#b05a36) bullet '·' with 16px space on each side. Wraps to multiple lines with 8px row gap.
+4. *Create a 2-column cinematic media card grid*: Two cards side by side with 16px gap, each card 10px border-radius with no shadow and no padding. Inside each card: a full-bleed photograph, a frosted glass badge top-right, and a 21px VisueltPro weight 500 white headline bottom-left over the gradient scrim.
 
-*Create a Primary Action Button: #b05a36 background, #fef9ef text, 9999px radius, compact pill padding. Use this filled treatment for the main CTA.
+5. *Create a circular video play button*: 50% border-radius, 1px #ffffff border, transparent background, contains a 10px white play triangle and "Watch the film" label at 13px VisueltPro weight 400 uppercase with +0.03em tracking.
 
-## Typographic Rhythm
+## Typography Signature
 
-The single most distinctive move in this system is the roman + italic pairing within Financier Display headlines. 'Testing is easy' uses roman 'Testing is' and italic 'easy' in the same line. '1000s of diseases' is entirely italic. '160+ lab tests chosen by top doctors' pairs roman with italic. This pattern is not decorative — it signals the editorial, almost personal voice of the brand, distinguishing Function from typical health-tech clinical copy. The italic word is always the emotional or surprising word; the roman words set up the structure. Never italicize whole sentences; never italicize UI labels or body text. Italic is reserved for Financier Display at 34px and above.
+The headline pattern alternates between two voices: VisueltPro weight 300 for narrative prose and Bradford italic for the single emotional payoff word. This is the system's only typographic flourish — there is no decorative color, no gradient type, no animated text. The mix of hairline sans and italic serif inside the same sentence is what makes a Sequel headline read as editorial rather than corporate. Display sizes (57–128px) always carry -0.025em to -0.05em tracking; uppercase labels (10–13px) always carry +0.03em to +0.08em. Body text is always 16px minimum, always VisueltPro weight 400, always white on black or charcoal.
+
+## Motion Philosophy
+
+The system uses expressive but restrained motion. Standard transitions are 0.2–0.3s with cubic-bezier(0.625, 0.05, 0, 1) easing — a slow-out curve that makes UI feel weighted and premium rather than snappy. Common transitions: opacity fades, transform slides, background and border-color shifts. There is a 45s linear `leagues-scrolling` marquee animation (the only long-duration motion in the system), used for partner/portfolio logo strips. Never animate color hue, never use spring physics, never use bounce easings — motion should feel like a slow zoom on a film still, not a UI spring.
 
 ## Similar Brands
 
-- **Goop** — Same warm cream canvas with a single rust accent and serif editorial headlines — wellness content styled like a premium magazine
-- **Athletic Greens / AG1** — Earth-toned brand palette with generous pill-shaped buttons and a premium, slow-paced editorial layout rhythm
-- **Whoop** — Health-tech brand that uses warm photography and muted off-white surfaces instead of typical medical white-and-blue
-- **Parsley Health** — Direct-to-consumer health platform with a warm neutral palette, pill buttons, and a single botanical accent color
+- **A24** — Same dark-canvas editorial language — pitch-black backgrounds, warm cinematic photography, a single accent tone, and display serif mixed with restrained sans typography. Both brands signal taste through restraint rather than decoration.
+- **Apple Vision Pro product page** — Full-bleed cinematic photography on pure black, hairline-weight display headlines at extreme sizes, and warm off-white pill CTAs as the only action color. Same "the image is the interface" philosophy.
+- **Kering corporate site** — Institutional luxury on pure black — heavy use of large breathing room, charcoal-on-black card surfaces, serif accents in display headings, and zero chromatic color in the UI chrome.
+- **The Row (therow.com)** — Monochrome editorial commerce — same warm cream accent against black, same display serif for product names, same whisper-thin sans for body text, same refusal to use color as decoration.
+- **Berkshire Hathaway annual letters web archive** — Anti-design institutional confidence — the visual system signals seriousness through what it omits (no color, no shadows, no decoration) rather than what it adds. Same "we don't need to impress you" posture.
 
 ## Quick Start
 
@@ -262,98 +239,86 @@ The single most distinctive move in this system is the roman + italic pairing wi
 ```css
 :root {
   /* Colors */
-  --color-terracotta-seal: #b05a36;
-  --gradient-terracotta-seal: linear-gradient(116deg, rgb(176, 90, 54), rgb(212, 166, 142));
-  --color-parchment: #fef9ef;
-  --color-aged-paper: #f5eee1;
-  --color-warm-taupe: #d1c9bf;
-  --color-ink: #2a2b2f;
-  --color-charcoal: #333333;
-  --color-graphite: #515151;
-  --color-ash: #808988;
-  --color-pure-black: #000000;
+  --color-void-black: #000000;
+  --color-pure-white: #ffffff;
+  --color-charcoal: #202020;
+  --color-graphite: #333333;
+  --color-lamp-cream: #f5f5f0;
+  --color-smoke: #999999;
 
   /* Typography — Font Families */
-  --font-financier-display: 'Financier Display', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-ftbase: 'Ftbase', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-fragment-mono: 'Fragment mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-visueltpro: 'VisueltPro', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-bradford: 'Bradford', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
-  --text-eyebrow: 12px;
-  --leading-eyebrow: 1.4;
-  --tracking-eyebrow: -0.28px;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.5;
-  --tracking-body-sm: -0.32px;
+  --text-label-sm: 11px;
+  --leading-label-sm: 1.5;
+  --tracking-label-sm: 0.55px;
   --text-body: 16px;
   --leading-body: 1.5;
-  --tracking-body: -0.37px;
-  --text-body-lg: 18px;
-  --leading-body-lg: 1.4;
-  --tracking-body-lg: -0.41px;
-  --text-subheading: 20px;
-  --leading-subheading: 1.3;
-  --tracking-subheading: -0.46px;
-  --text-heading: 34px;
-  --leading-heading: 1.15;
-  --text-heading-lg: 45px;
-  --leading-heading-lg: 1.1;
-  --text-display: 64px;
+  --tracking-body: 0px;
+  --text-body-lg: 20px;
+  --leading-body-lg: 1.5;
+  --tracking-body-lg: 0px;
+  --text-subheading: 30px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: -0.75px;
+  --text-heading: 54px;
+  --leading-heading: 1.2;
+  --tracking-heading: 0px;
+  --text-heading-lg: 57px;
+  --leading-heading-lg: 1;
+  --tracking-heading-lg: -2.85px;
+  --text-display: 128px;
   --leading-display: 1;
-  --text-hero: 80px;
-  --leading-hero: 0.95;
-  --text-display-xl: 88px;
-  --leading-display-xl: 0.9;
+  --tracking-display: -3.2px;
 
   /* Typography — Weights */
   --font-weight-light: 300;
   --font-weight-regular: 400;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
+  --font-weight-medium: 500;
 
   /* Spacing */
-  --spacing-unit: 8px;
+  --spacing-unit: 4px;
+  --spacing-4: 4px;
   --spacing-8: 8px;
+  --spacing-12: 12px;
   --spacing-16: 16px;
+  --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-28: 28px;
   --spacing-32: 32px;
   --spacing-40: 40px;
-  --spacing-48: 48px;
-  --spacing-56: 56px;
   --spacing-64: 64px;
   --spacing-80: 80px;
-  --spacing-240: 240px;
+  --spacing-96: 96px;
 
   /* Layout */
-  --page-max-width: 1280px;
-  --section-gap: 64-96px;
-  --card-padding: 24-32px;
+  --page-max-width: 1200px;
+  --section-gap: 96-120px;
+  --card-padding: 0px;
   --element-gap: 16px;
 
   /* Border Radius */
-  --radius-sm: 2px;
-  --radius-xl: 12px;
-  --radius-3xl: 24px;
-  --radius-3xl-2: 40px;
-  --radius-full: 1440px;
+  --radius-lg: 10px;
+  --radius-full: 9999px;
 
   /* Named Radii */
-  --radius-nav: 12px;
-  --radius-tags: 9999px;
-  --radius-cards: 24px;
-  --radius-pills: 9999px;
-  --radius-inputs: 9999px;
-  --radius-buttons: 40px;
+  --radius-cards: 10px;
+  --radius-badges: 9999px;
+  --radius-inputs: 0px;
+  --radius-buttons: 9999px;
+  --radius-playbutton: 50%;
 
   /* Shadows */
-  --shadow-lg: rgba(0, 0, 0, 0.15) 0px 0px 20px 0px;
-  --shadow-xl: rgba(42, 43, 47, 0.1) 12px 32px 80px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.35) 0px 10px 30px 0px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset;
+  --shadow-lg: rgba(0, 0, 0, 0.15) 0px 4px 20px 0px;
 
   /* Surfaces */
-  --surface-parchment-canvas: #fef9ef;
-  --surface-aged-paper: #f5eee1;
-  --surface-taupe-outline: #d1c9bf;
-  --surface-terracotta-seal: #b05a36;
+  --surface-void: #000000;
+  --surface-charcoal: #202020;
+  --surface-graphite: #333333;
+  --surface-lamp-cream: #f5f5f0;
 }
 ```
 
@@ -362,69 +327,60 @@ The single most distinctive move in this system is the roman + italic pairing wi
 ```css
 @theme {
   /* Colors */
-  --color-terracotta-seal: #b05a36;
-  --color-parchment: #fef9ef;
-  --color-aged-paper: #f5eee1;
-  --color-warm-taupe: #d1c9bf;
-  --color-ink: #2a2b2f;
-  --color-charcoal: #333333;
-  --color-graphite: #515151;
-  --color-ash: #808988;
-  --color-pure-black: #000000;
+  --color-void-black: #000000;
+  --color-pure-white: #ffffff;
+  --color-charcoal: #202020;
+  --color-graphite: #333333;
+  --color-lamp-cream: #f5f5f0;
+  --color-smoke: #999999;
 
   /* Typography */
-  --font-financier-display: 'Financier Display', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-ftbase: 'Ftbase', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-fragment-mono: 'Fragment mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-visueltpro: 'VisueltPro', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-bradford: 'Bradford', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
-  --text-eyebrow: 12px;
-  --leading-eyebrow: 1.4;
-  --tracking-eyebrow: -0.28px;
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.5;
-  --tracking-body-sm: -0.32px;
+  --text-label-sm: 11px;
+  --leading-label-sm: 1.5;
+  --tracking-label-sm: 0.55px;
   --text-body: 16px;
   --leading-body: 1.5;
-  --tracking-body: -0.37px;
-  --text-body-lg: 18px;
-  --leading-body-lg: 1.4;
-  --tracking-body-lg: -0.41px;
-  --text-subheading: 20px;
-  --leading-subheading: 1.3;
-  --tracking-subheading: -0.46px;
-  --text-heading: 34px;
-  --leading-heading: 1.15;
-  --text-heading-lg: 45px;
-  --leading-heading-lg: 1.1;
-  --text-display: 64px;
+  --tracking-body: 0px;
+  --text-body-lg: 20px;
+  --leading-body-lg: 1.5;
+  --tracking-body-lg: 0px;
+  --text-subheading: 30px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: -0.75px;
+  --text-heading: 54px;
+  --leading-heading: 1.2;
+  --tracking-heading: 0px;
+  --text-heading-lg: 57px;
+  --leading-heading-lg: 1;
+  --tracking-heading-lg: -2.85px;
+  --text-display: 128px;
   --leading-display: 1;
-  --text-hero: 80px;
-  --leading-hero: 0.95;
-  --text-display-xl: 88px;
-  --leading-display-xl: 0.9;
+  --tracking-display: -3.2px;
 
   /* Spacing */
+  --spacing-4: 4px;
   --spacing-8: 8px;
+  --spacing-12: 12px;
   --spacing-16: 16px;
+  --spacing-20: 20px;
   --spacing-24: 24px;
+  --spacing-28: 28px;
   --spacing-32: 32px;
   --spacing-40: 40px;
-  --spacing-48: 48px;
-  --spacing-56: 56px;
   --spacing-64: 64px;
   --spacing-80: 80px;
-  --spacing-240: 240px;
+  --spacing-96: 96px;
 
   /* Border Radius */
-  --radius-sm: 2px;
-  --radius-xl: 12px;
-  --radius-3xl: 24px;
-  --radius-3xl-2: 40px;
-  --radius-full: 1440px;
+  --radius-lg: 10px;
+  --radius-full: 9999px;
 
   /* Shadows */
-  --shadow-lg: rgba(0, 0, 0, 0.15) 0px 0px 20px 0px;
-  --shadow-xl: rgba(42, 43, 47, 0.1) 12px 32px 80px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.35) 0px 10px 30px 0px, rgba(255, 255, 255, 0.08) 0px 1px 0px 0px inset;
+  --shadow-lg: rgba(0, 0, 0, 0.15) 0px 4px 20px 0px;
 }
 ```
