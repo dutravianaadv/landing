@@ -20,16 +20,16 @@ export const practiceAreas = [
     id: 'previdenciario',
     title: 'Direito Previdenciário',
     image: previdenciarioImage,
-    alt: 'Atendimento a um segurado durante o preenchimento de documentação previdenciária',
+    alt: 'Senhora em casa, sentada na poltrona, consultando informações no notebook',
     description:
-      'Aposentadorias, benefícios do INSS, planejamento previdenciário, revisões, benefícios por incapacidade, BPC/LOAS, pensão por morte e outras questões previdenciárias.',
+      'Aposentadorias, Benefícios do INSS, Planejamento Previdenciário, Revisões, Benefícios por Incapacidade, BPC/LOAS, Pensão por Morte e Outras Questões Previdenciárias.',
     cta: 'Conheça o previdenciário',
   },
   {
     id: 'trabalhista',
     title: 'Direito do Trabalho',
     image: trabalhistaImage,
-    alt: 'Profissional de construção civil em capacete no ambiente de trabalho',
+    alt: 'Carteira de Trabalho e Previdência Social sobre documentos, ao lado de um martelo de juiz e de uma balança da justiça',
     description:
       'Atuação para trabalhadores e empresas em questões relacionadas às relações de trabalho, direitos trabalhistas, prevenção de conflitos e demandas judiciais.',
     cta: 'Conheça o trabalhista',
@@ -96,6 +96,7 @@ export const especializacoesPrevidenciario: Especializacao[] = [
       'São aposentadorias com requisitos próprios, que reconhecem condições específicas de trabalho e, em muitos casos, reduzem a idade ou o tempo exigido em relação às regras gerais.',
     who: [
       'Rural: 55 anos (mulheres) e 60 anos (homens), com 15 anos de atividade rural comprovada.',
+      'Pescador artesanal: segurado especial com as mesmas idades da rural e 15 anos de pesca comprovados ano a ano, pelo RGP, pela venda do pescado e pelo histórico de seguro-defeso.',
       'Agentes nocivos: 15, 20 ou 25 anos de exposição, conforme o grau de risco, com idade mínima de 55, 58 ou 60 anos.',
       'Pessoa com deficiência: por idade (60 anos homens e 55 mulheres, com 15 anos de contribuição na condição) ou por tempo, conforme o grau da deficiência.',
       'Professor: 57 anos + 25 anos de magistério (mulheres) ou 60 anos + 30 anos (homens).',
@@ -506,47 +507,50 @@ export const pillars = [
 ]
 
 /** 07 e 08 — Detalhamento das áreas */
-export const previdenciarioServices = [
-  'Aposentadorias',
-  'Planejamento Previdenciário',
-  'Benefícios por incapacidade',
-  'BPC/LOAS',
-  'Pensão por morte',
-  'Salário-maternidade',
-  'Auxílio-reclusão',
-  'Revisão de benefícios',
-  'Acerto de CNIS',
-  'Recursos administrativos',
-  'Benefícios negados',
-  'Ações judiciais',
+/** Item de lista que abre a especialização correspondente (sem `id`, fica só como texto) */
+export type Servico = { label: string; id?: string }
+
+export const previdenciarioServices: Servico[] = [
+  { label: 'Aposentadorias', id: 'aposentadoria-planejamento' },
+  { label: 'Planejamento Previdenciário', id: 'aposentadoria-planejamento' },
+  { label: 'Benefícios por incapacidade', id: 'auxilio-doenca' },
+  { label: 'BPC/LOAS', id: 'bpc-loas' },
+  { label: 'Pensão por morte', id: 'pensao-por-morte' },
+  { label: 'Salário-maternidade', id: 'salario-maternidade' },
+  { label: 'Auxílio-reclusão', id: 'auxilio-reclusao' },
+  { label: 'Revisão de benefícios', id: 'revisao-reativacao' },
+  { label: 'Acerto de CNIS', id: 'aposentadoria-planejamento' },
+  { label: 'Recursos administrativos', id: 'revisao-reativacao' },
+  { label: 'Benefícios negados', id: 'revisao-reativacao' },
+  { label: 'Ações judiciais', id: 'revisao-reativacao' },
 ]
 
-export const trabalhistaWorkers = [
-  'Verbas rescisórias',
-  'Horas extras',
-  'FGTS',
-  'Férias e 13º salário',
-  'Reconhecimento de vínculo',
-  'Trabalho sem registro',
-  'Acidentes de trabalho',
-  'Doenças ocupacionais',
-  'Estabilidade',
-  'Assédio moral',
-  'Insalubridade e periculosidade',
-  'Rescisão indireta',
-  'Justa causa',
-  'Direitos da gestante',
-  'Trabalho doméstico',
+export const trabalhistaWorkers: Servico[] = [
+  { label: 'Verbas rescisórias', id: 'verbas-rescisorias' },
+  { label: 'Horas extras', id: 'horas-extras' },
+  { label: 'FGTS', id: 'verbas-rescisorias' },
+  { label: 'Férias e 13º salário', id: 'verbas-rescisorias' },
+  { label: 'Reconhecimento de vínculo', id: 'reconhecimento-vinculo' },
+  { label: 'Trabalho sem registro', id: 'reconhecimento-vinculo' },
+  { label: 'Acidentes de trabalho', id: 'acidente-doenca-ocupacional' },
+  { label: 'Doenças ocupacionais', id: 'acidente-doenca-ocupacional' },
+  { label: 'Estabilidade', id: 'estabilidades' },
+  { label: 'Assédio moral', id: 'assedio-moral' },
+  { label: 'Insalubridade e periculosidade', id: 'insalubridade-periculosidade' },
+  { label: 'Rescisão indireta', id: 'rescisao-indireta-justa-causa' },
+  { label: 'Justa causa', id: 'rescisao-indireta-justa-causa' },
+  { label: 'Direitos da gestante', id: 'estabilidades' },
+  { label: 'Trabalho doméstico' },
 ]
 
-export const companiesServices = [
-  'Consultoria trabalhista',
-  'Contratos',
-  'Prevenção de passivos',
-  'Auditoria trabalhista',
-  'Defesa em reclamações',
-  'Negociações e acordos',
-  'Orientação preventiva',
+export const companiesServices: Servico[] = [
+  { label: 'Consultoria trabalhista', id: 'consultoria-empresas' },
+  { label: 'Contratos', id: 'consultoria-empresas' },
+  { label: 'Prevenção de passivos', id: 'consultoria-empresas' },
+  { label: 'Auditoria trabalhista', id: 'consultoria-empresas' },
+  { label: 'Defesa em reclamações', id: 'consultoria-empresas' },
+  { label: 'Negociações e acordos', id: 'consultoria-empresas' },
+  { label: 'Orientação preventiva', id: 'consultoria-empresas' },
 ]
 
 /** 09 — Bloco especial para empresas */

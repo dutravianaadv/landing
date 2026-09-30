@@ -140,6 +140,42 @@ Para empregados/contribuintes/avulsos rurais: mesmas idades se todo o tempo foi 
 
 **Como requerer:** reunir documentação → preencher autodeclaração (segurados especiais) → "Meu INSS" (serviço "Aposentadoria por Idade Rural") ou telefone 135 → acompanhar (pode haver entrevista de confirmação).
 
+### Aposentadoria do Pescador Artesanal
+- **Para quem:** pescador que exerce a pesca de forma individual ou em regime de economia familiar, sem empregados permanentes, com a pesca como principal fonte de sustento — incluindo cônjuge/companheiro(a) e filhos maiores de 16 anos que participem ativa e permanentemente da atividade. É enquadrado como **Segurado Especial**.
+- Outra fonte de renda pode descaracterizar a condição (com exceções previstas em lei, como pequenos rendimentos de outras fontes).
+
+**Modalidades:**
+1. **Aposentadoria por Idade do Segurado Especial (rural/pesqueira):** a mais comum; dispensa contribuições em dinheiro, pois a contribuição incide sobre a comercialização da produção
+2. **Aposentadoria Especial por Exposição a Agentes Nocivos:** se comprovada exposição a agentes insalubres ou perigosos (ruído de motores, produtos químicos de manutenção de embarcações etc.)
+3. **Aposentadoria Híbrida:** soma a atividade pesqueira com períodos urbanos ou como contribuinte individual
+
+**Requisitos — aposentadoria por idade:**
+- Idade: 60 anos (homens) / 55 anos (mulheres) — a Reforma (EC 103/2019) não alterou essas idades
+- Tempo de atividade: mínimo de 15 anos (180 meses) de efetiva atividade pesqueira, comprovados ano a ano, ainda que de forma descontínua
+
+**Requisitos — aposentadoria especial (agentes nocivos):**
+- Tempo de exposição: 15, 20 ou 25 anos, conforme o grau de nocividade
+- Direito adquirido (tempo completo até 12/11/2019): sem idade mínima
+- Regra de transição: pontuação mínima (idade + tempo de contribuição)
+- Regra permanente: idade mínima de 55, 58 ou 60 anos, conforme o risco
+
+**Comprovação da atividade pesqueira:**
+- Registro Geral da Pesca (RGP) válido e ativo nos períodos a comprovar
+- Declaração do sindicato ou colônia de pescadores
+- Comprovantes de comercialização: notas fiscais de venda, depósitos bancários da venda do pescado, contratos com frigoríficos, cooperativas ou comerciantes
+- Licenças de embarcação ou documentos de propriedade/comodato de equipamentos
+- Histórico de recebimento do Seguro-Defeso
+- Declaração de Imposto de Renda (própria ou do cônjuge) com renda da pesca
+- Histórico escolar dos filhos em escolas rurais ou pesqueiras
+- Testemunhas, corroboradas por prova material
+
+> Os documentos devem cobrir todo o período, idealmente ano a ano, até somar os 15 anos exigidos.
+
+**Peculiaridades:**
+- Valor: em regra, um salário mínimo; pode ser superior se o pescador também contribuir como contribuinte individual/facultativo
+- Períodos em outras atividades podem ser somados ao tempo de pesca (aposentadoria híbrida), o que pode alterar a regra de cálculo
+- Tempo especial anterior à Reforma de 2019 (ex: pesca embarcada industrial) pode ser convertido em tempo comum
+
 ### Aposentadoria por Exposição a Agentes Nocivos (antiga "Aposentadoria Especial")
 - **Para quem:** trabalhadores expostos a agentes físicos, químicos ou biológicos, ou atividades perigosas, de forma habitual e permanente
 - **Diferencial:** tempo de contribuição reduzido — 25, 20 ou 15 anos conforme o grau de risco

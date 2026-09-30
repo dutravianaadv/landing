@@ -22,7 +22,7 @@ function MapaBrasil() {
             className={
               destaques.has(estado.id)
                 ? 'fill-navy stroke-cream'
-                : 'fill-navy/[0.08] stroke-cream'
+                : 'fill-navy/[0.18] stroke-cream'
             }
           >
             <title>{estado.name}</title>

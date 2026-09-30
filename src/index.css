@@ -125,7 +125,7 @@
   .link-underline:hover { background-size: 0% 1px; background-position: 100% 100%; }
 
   /* Mapas do Google: tom quente (creme) no repouso, cor natural no hover */
-  .map-soft { filter: sepia(0.28) saturate(0.85) contrast(0.96); transition: filter 350ms var(--ease-soft); }
+  .map-soft { filter: sepia(0.28) saturate(0.85) contrast(0.96) brightness(0.92); transition: filter 350ms var(--ease-soft); }
   .map-soft:hover { filter: none; }
 }
 

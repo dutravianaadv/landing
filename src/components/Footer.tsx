@@ -104,6 +104,20 @@ function Footer() {
             {brand.areas} · Manaus/AM · Palmas/TO
           </p>
         </div>
+
+        {/* Crédito exigido pela licença CC BY da foto de Direito Previdenciário */}
+        <p className="-mt-4 pb-8 text-[0.68rem] opacity-60">
+          Foto:{' '}
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Elderly_woman_sitting_in_an_armchair_and_holding_her_glasses_while_typing_on_a_laptop._(51531777613).jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2"
+          >
+            Nenad Stojkovic
+          </a>{' '}
+          (CC BY 2.0)
+        </p>
       </div>
     </footer>
   )

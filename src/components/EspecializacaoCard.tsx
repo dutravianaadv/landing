@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react'
 import { Check, X } from 'lucide-react'
 import { contact } from '../data/site'
 import type { Especializacao } from '../data/conteudo'
+import { artigos } from '../data/artigos'
+import Artigo from './Artigo'
 import WhatsappIcon from './WhatsappIcon'
 
 type Props = {
@@ -73,6 +75,7 @@ function EspecializacaoCard({ especializacao, area, position, onClose }: Props) 
   if (!especializacao) return null
 
   const titleId = `especializacao-${especializacao.id}`
+  const artigo = artigos[especializacao.id]
 
   return (
     <div
@@ -87,7 +90,7 @@ function EspecializacaoCard({ especializacao, area, position, onClose }: Props) 
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="surface max-h-[90dvh] w-full max-w-2xl overflow-y-auto rounded-t-sm sm:max-h-[88dvh] sm:rounded-sm"
+        className={`surface max-h-[90dvh] w-full ${artigo ? 'max-w-3xl' : 'max-w-2xl'} overflow-y-auto rounded-t-sm sm:max-h-[88dvh] sm:rounded-sm`}
       >
         <div className="flex items-start justify-between gap-6 border-b border-black/10 p-6 sm:p-8">
           <div>
@@ -113,24 +116,30 @@ function EspecializacaoCard({ especializacao, area, position, onClose }: Props) 
             {especializacao.summary}
           </p>
 
-          <div>
-            <h4 className="eyebrow border-b border-black/10 pb-3 text-navy">O que é</h4>
-            <p className="mt-4 leading-relaxed text-muted">{especializacao.whatIs}</p>
-          </div>
+          {artigo ? (
+            <Artigo markdown={artigo} />
+          ) : (
+            <>
+              <div>
+                <h4 className="eyebrow border-b border-black/10 pb-3 text-navy">O que é</h4>
+                <p className="mt-4 leading-relaxed text-muted">{especializacao.whatIs}</p>
+              </div>
 
-          <div>
-            <h4 className="eyebrow border-b border-black/10 pb-3 text-navy">Quem tem direito</h4>
-            <div className="mt-5">
-              <Lista items={especializacao.who} marker="check" />
-            </div>
-          </div>
+              <div>
+                <h4 className="eyebrow border-b border-black/10 pb-3 text-navy">Quem tem direito</h4>
+                <div className="mt-5">
+                  <Lista items={especializacao.who} marker="check" />
+                </div>
+              </div>
 
-          <div>
-            <h4 className="eyebrow border-b border-black/10 pb-3 text-navy">Pontos importantes</h4>
-            <div className="mt-5">
-              <Lista items={especializacao.highlights} marker="dot" />
-            </div>
-          </div>
+              <div>
+                <h4 className="eyebrow border-b border-black/10 pb-3 text-navy">Pontos importantes</h4>
+                <div className="mt-5">
+                  <Lista items={especializacao.highlights} marker="dot" />
+                </div>
+              </div>
+            </>
+          )}
         </div>
 
         <div className="flex flex-wrap items-center gap-4 border-t border-black/10 bg-cream-dark p-6 sm:p-8">

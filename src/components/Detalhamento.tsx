@@ -1,25 +1,90 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
 import { contact } from '../data/site'
 import {
+  areasEspecializacao,
   companiesServices,
   previdenciarioServices,
   trabalhistaWorkers,
 } from '../data/conteudo'
+import type { Servico } from '../data/conteudo'
+import EspecializacaoCard from './EspecializacaoCard'
 
-function Servicos({ items }: { items: string[] }) {
+/** Localiza a especialização pelo id, com a área e a posição dela no carrossel */
+function findEspecializacao(id: string) {
+  for (const area of areasEspecializacao) {
+    const index = area.items.findIndex((item) => item.id === id)
+    if (index >= 0) return { area: area.title, index, item: area.items[index] }
+  }
+  return null
+}
+
+type Aberta = NonNullable<ReturnType<typeof findEspecializacao>>
+
+type ServicosProps = {
+  items: Servico[]
+  vistos: Set<string>
+  onOpen: (servico: Servico, trigger: HTMLButtonElement) => void
+}
+
+function Servicos({ items, vistos, onOpen }: ServicosProps) {
   return (
     <ul className="space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-[0.95rem] leading-relaxed text-muted">
+      {items.map((servico) => {
+        const icon = (
           <Check className="mt-1 size-3.5 shrink-0 text-gold" strokeWidth={1.5} aria-hidden="true" />
-          {item}
-        </li>
-      ))}
+        )
+        return (
+          <li key={servico.label} className="text-[0.95rem] leading-relaxed text-muted">
+            {servico.id ? (
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                onClick={(event) => onOpen(servico, event.currentTarget)}
+                className={`group flex items-start gap-3 text-left transition-colors duration-250 hover:text-navy ${
+                  vistos.has(servico.label) ? 'text-gold-dark' : ''
+                }`}
+              >
+                {icon}
+                <span className="decoration-gold/60 underline-offset-4 group-hover:underline">
+                  {servico.label}
+                </span>
+              </button>
+            ) : (
+              <span className="flex items-start gap-3">
+                {icon}
+                {servico.label}
+              </span>
+            )}
+          </li>
+        )
+      })}
     </ul>
   )
 }
 
 function Detalhamento() {
+  const [aberta, setAberta] = useState<Aberta | null>(null)
+  const [vistos, setVistos] = useState<Set<string>>(() => new Set())
+  const lastTrigger = useRef<HTMLButtonElement | null>(null)
+
+  useEffect(() => {
+    if (aberta === null && lastTrigger.current) {
+      lastTrigger.current.focus()
+      lastTrigger.current = null
+    }
+  }, [aberta])
+
+  const onClose = useCallback(() => setAberta(null), [])
+
+  const onOpen = (servico: Servico, trigger: HTMLButtonElement) => {
+    const encontrada = servico.id ? findEspecializacao(servico.id) : null
+    if (!encontrada) return
+    lastTrigger.current = trigger
+    setVistos((prev) => new Set(prev).add(servico.label))
+    setAberta(encontrada)
+  }
+
   return (
     <section className="section-y bg-cream">
       <div className="container-page grid gap-16 lg:grid-cols-2 lg:gap-20">
@@ -38,7 +103,7 @@ function Detalhamento() {
           </p>
 
           <div className="mt-8">
-            <Servicos items={previdenciarioServices} />
+            <Servicos items={previdenciarioServices} vistos={vistos} onOpen={onOpen} />
           </div>
 
           <a
@@ -70,13 +135,13 @@ function Detalhamento() {
             <div>
               <h3 className="eyebrow border-b border-black/10 pb-3 text-navy">Para trabalhadores</h3>
               <div className="mt-5">
-                <Servicos items={trabalhistaWorkers} />
+                <Servicos items={trabalhistaWorkers} vistos={vistos} onOpen={onOpen} />
               </div>
             </div>
             <div>
               <h3 className="eyebrow border-b border-black/10 pb-3 text-navy">Para empresas</h3>
               <div className="mt-5">
-                <Servicos items={companiesServices} />
+                <Servicos items={companiesServices} vistos={vistos} onOpen={onOpen} />
               </div>
             </div>
           </div>
@@ -93,6 +158,13 @@ function Detalhamento() {
           </div>
         </article>
       </div>
+
+      <EspecializacaoCard
+        especializacao={aberta?.item ?? null}
+        area={aberta?.area ?? ''}
+        position={String((aberta?.index ?? 0) + 1).padStart(2, '0')}
+        onClose={onClose}
+      />
     </section>
   )
 }

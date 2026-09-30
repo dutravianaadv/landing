@@ -59,6 +59,29 @@ type CarrosselProps = {
   onOpen: (index: number, trigger: HTMLButtonElement) => void
 }
 
+type SetaProps = {
+  direction: 1 | -1
+  disabled: boolean
+  label: string
+  onClick: () => void
+}
+
+/** Seta lateral do carrossel: só a partir do tablet, no toque basta deslizar */
+function Seta({ direction, disabled, label, onClick }: SetaProps) {
+  const Icon = direction === 1 ? ArrowRight : ArrowLeft
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={label}
+      className="mb-5 hidden size-11 shrink-0 place-items-center border border-navy/25 text-navy transition-colors duration-250 hover:border-gold hover:bg-gold disabled:pointer-events-none disabled:opacity-30 sm:grid"
+    >
+      <Icon className="size-4" strokeWidth={1.5} aria-hidden="true" />
+    </button>
+  )
+}
+
 /** Trilho com rolagem horizontal e snap: arrasta no toque, setas no desktop */
 function Carrossel({ area, numero, onOpen }: CarrosselProps) {
   const trackRef = useRef<HTMLUListElement>(null)
@@ -91,99 +114,92 @@ function Carrossel({ area, numero, onOpen }: CarrosselProps) {
 
   return (
     <div role="region" aria-roledescription="carrossel" aria-labelledby={titleId}>
-      <div className="flex items-end justify-between gap-4 border-b border-black/10 pb-5">
-        <div>
-          <p className="eyebrow text-gold-dark">
-            {numero} · {area.items.length} especializações
-          </p>
-          <h3 id={titleId} className="title-display mt-2 text-[clamp(1.5rem,2.6vw,2rem)] text-navy">
-            {area.title}
-          </h3>
-        </div>
-
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            onClick={() => scroll(-1)}
-            disabled={edges.start}
-            aria-label={`Especializações anteriores de ${area.title}`}
-            className="grid size-11 place-items-center border border-navy/25 text-navy transition-colors duration-250 hover:border-gold hover:bg-gold disabled:pointer-events-none disabled:opacity-30"
-          >
-            <ArrowLeft className="size-4" strokeWidth={1.5} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scroll(1)}
-            disabled={edges.end}
-            aria-label={`Próximas especializações de ${area.title}`}
-            className="grid size-11 place-items-center border border-navy/25 text-navy transition-colors duration-250 hover:border-gold hover:bg-gold disabled:pointer-events-none disabled:opacity-30"
-          >
-            <ArrowRight className="size-4" strokeWidth={1.5} aria-hidden="true" />
-          </button>
-        </div>
+      <div className="border-b border-black/10 pb-5">
+        <p className="eyebrow text-gold-dark">
+          {numero} · {area.items.length} especializações
+        </p>
+        <h3 id={titleId} className="title-display mt-2 text-[clamp(1.5rem,2.6vw,2rem)] text-navy">
+          {area.title}
+        </h3>
       </div>
 
-      <ul
-        ref={trackRef}
-        onScroll={updateEdges}
-        className="scrollbar-none -mx-5 mt-5 flex snap-x snap-mandatory scroll-px-5 gap-5 overflow-x-auto px-5 pt-1 pb-6 sm:mx-0 sm:scroll-px-0 sm:px-0"
-      >
-        {area.items.map((item, index) => {
-          const Icon = icons[item.id] ?? Scale
-          return (
-            <li
-              key={item.id}
-              className="w-[82%] shrink-0 snap-start sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
-            >
-              <button
-                type="button"
-                aria-haspopup="dialog"
-                onClick={(event) => onOpen(index, event.currentTarget)}
-                className="group relative flex h-full min-h-[clamp(320px,44svh,380px)] w-full flex-col overflow-hidden rounded-card bg-navy text-left shadow-[0_18px_40px_-24px_rgba(4,28,45,0.7)] transition-transform duration-300 ease-soft hover:-translate-y-[3px]"
+      <div className="mt-5 flex items-center gap-4">
+        <Seta
+          direction={-1}
+          disabled={edges.start}
+          label={`Especializações anteriores de ${area.title}`}
+          onClick={() => scroll(-1)}
+        />
+
+        <ul
+          ref={trackRef}
+          onScroll={updateEdges}
+          className="scrollbar-none -mx-5 flex min-w-0 flex-1 snap-x snap-mandatory scroll-px-5 gap-5 overflow-x-auto px-5 pt-1 pb-6 sm:mx-0 sm:scroll-px-0 sm:px-0"
+        >
+          {area.items.map((item, index) => {
+            const Icon = icons[item.id] ?? Scale
+            return (
+              <li
+                key={item.id}
+                className="w-[82%] shrink-0 snap-start sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
               >
-                {/* Foto da área esmaecida no topo, recortada em pontos diferentes a cada cartão */}
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-0 top-0 h-[58%] bg-cover opacity-45 transition-[opacity,transform] duration-700 ease-soft group-hover:scale-103 group-hover:opacity-60"
-                  style={{
-                    backgroundImage: `url(${area.image})`,
-                    backgroundPosition: `${(index * 37) % 100}% ${30 + ((index * 23) % 40)}%`,
-                  }}
-                />
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[linear-gradient(180deg,rgb(6_36_58/0.35)_0%,rgb(6_36_58/0.85)_38%,var(--navy)_58%)]"
-                />
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  onClick={(event) => onOpen(index, event.currentTarget)}
+                  className="group relative flex h-full min-h-[clamp(320px,44svh,380px)] w-full flex-col overflow-hidden rounded-card bg-navy text-left shadow-[0_18px_40px_-24px_rgba(4,28,45,0.7)] transition-transform duration-300 ease-soft hover:-translate-y-[3px]"
+                >
+                  {/* Foto da área esmaecida no topo, recortada em pontos diferentes a cada cartão */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-[58%] bg-cover opacity-45 transition-[opacity,transform] duration-700 ease-soft group-hover:scale-103 group-hover:opacity-60"
+                    style={{
+                      backgroundImage: `url(${area.image})`,
+                      backgroundPosition: `${(index * 37) % 100}% ${30 + ((index * 23) % 40)}%`,
+                    }}
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[linear-gradient(180deg,rgb(6_36_58/0.35)_0%,rgb(6_36_58/0.85)_38%,var(--navy)_58%)]"
+                  />
   
-                <span className="relative flex flex-1 flex-col p-6 pt-[clamp(4.5rem,11svh,6rem)] sm:p-7 sm:pt-[clamp(4.5rem,11svh,6rem)]">
-                  <span className="flex items-center justify-between gap-4">
-                    <Icon className="size-8 text-gold" strokeWidth={1.1} aria-hidden="true" />
-                    <span className="text-[0.7rem] tracking-[0.14em] text-white/45">
-                      {String(index + 1).padStart(2, '0')} / {String(area.items.length).padStart(2, '0')}
+                  <span className="relative flex flex-1 flex-col p-6 pt-[clamp(4.5rem,11svh,6rem)] sm:p-7 sm:pt-[clamp(4.5rem,11svh,6rem)]">
+                    <span className="flex items-center justify-between gap-4">
+                      <Icon className="size-8 text-gold" strokeWidth={1.1} aria-hidden="true" />
+                      <span className="text-[0.7rem] tracking-[0.14em] text-white/45">
+                        {String(index + 1).padStart(2, '0')} / {String(area.items.length).padStart(2, '0')}
+                      </span>
+                    </span>
+  
+                    <span className="mt-5 text-[0.95rem] leading-snug font-medium tracking-[0.08em] text-white uppercase">
+                      {item.title}
+                    </span>
+                    <span className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-mist/70">
+                      {item.summary}
+                    </span>
+  
+                    <span className="mt-6 inline-flex w-fit items-center gap-3 border border-gold/70 px-4 py-2.5 text-[0.68rem] font-medium tracking-[0.16em] text-white uppercase transition-colors duration-250 group-hover:border-gold group-hover:bg-gold group-hover:text-navy">
+                      Ver especialização
+                      <ArrowRight
+                        className="size-3.5 transition-transform duration-250 ease-soft group-hover:translate-x-0.5"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
                     </span>
                   </span>
-  
-                  <span className="mt-5 text-[0.95rem] leading-snug font-medium tracking-[0.08em] text-white uppercase">
-                    {item.title}
-                  </span>
-                  <span className="mt-3 flex-1 text-[0.9rem] leading-relaxed text-mist/70">
-                    {item.summary}
-                  </span>
-  
-                  <span className="mt-6 inline-flex w-fit items-center gap-3 border border-gold/70 px-4 py-2.5 text-[0.68rem] font-medium tracking-[0.16em] text-white uppercase transition-colors duration-250 group-hover:border-gold group-hover:bg-gold group-hover:text-navy">
-                    Ver especialização
-                    <ArrowRight
-                      className="size-3.5 transition-transform duration-250 ease-soft group-hover:translate-x-0.5"
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                  </span>
-                </span>
-              </button>
-            </li>
-          )
-        })}
-      </ul>
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+
+        <Seta
+          direction={1}
+          disabled={edges.end}
+          label={`Próximas especializações de ${area.title}`}
+          onClick={() => scroll(1)}
+        />
+      </div>
     </div>
   )
 }
