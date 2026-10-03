@@ -1,5 +1,5 @@
-import { Globe, MapPin, Phone } from 'lucide-react'
-import { contact, locations } from '../data/site'
+import { Globe, Mail, MapPin, Phone } from 'lucide-react'
+import { contact, locations, whatsapps } from '../data/site'
 import WhatsappIcon from './WhatsappIcon'
 
 function Presenca() {
@@ -48,6 +48,7 @@ function Presenca() {
 
               <a
                 href={location.phoneHref}
+                data-direto
                 target={location.phoneHref.startsWith('https') ? '_blank' : undefined}
                 rel={location.phoneHref.startsWith('https') ? 'noopener noreferrer' : undefined}
                 className="mt-6 inline-flex items-center gap-2 text-[0.7rem] font-medium tracking-[0.14em] text-navy uppercase transition-colors duration-250 hover:text-gold-dark"
@@ -64,12 +65,25 @@ function Presenca() {
         </ul>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-black/10 pt-8">
+          {whatsapps.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              data-direto
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[0.95rem] text-muted transition-colors duration-250 hover:text-navy"
+            >
+              <WhatsappIcon className="size-4 text-gold" />
+              {item.phone}
+            </a>
+          ))}
           <a
-            href={contact.phoneHref}
+            href={`mailto:${contact.email}`}
             className="inline-flex items-center gap-2 text-[0.95rem] text-muted transition-colors duration-250 hover:text-navy"
           >
-            <Phone className="size-4 text-gold" strokeWidth={1.25} aria-hidden="true" />
-            {contact.phone}
+            <Mail className="size-4 text-gold" strokeWidth={1.25} aria-hidden="true" />
+            {contact.email}
           </a>
           <a
             href={contact.instagramUrl}

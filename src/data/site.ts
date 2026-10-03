@@ -11,11 +11,16 @@ export const signature = [
   'Atenção para cada história.',
 ]
 
+/** Os dois números atendem por WhatsApp; os botões genéricos abrem a escolha entre eles */
+export const whatsapps = [
+  { city: 'Manaus/AM', phone: '(92) 99259-0565', href: 'https://wa.me/5592992590565' },
+  { city: 'Palmas/TO', phone: '(63) 3025-8500', href: 'https://wa.me/556330258500' },
+]
+
 export const contact = {
-  phone: '(92) 99259-0565',
-  phoneHref: 'tel:+5592992590565',
-  whatsapp: 'https://wa.me/5592992590565',
-  email: 'contato@dutravianaadv.com.br',
+  phone: whatsapps[0].phone,
+  whatsapp: whatsapps[0].href,
+  email: 'dutraeviana.adv@gmail.com',
   instagram: '@dutravianaadv',
   instagramUrl: 'https://instagram.com/dutravianaadv',
 }
@@ -39,8 +44,8 @@ export const locations: Location[] = [
     kind: 'Atendimento local',
     lines: ['Rua Dallas, 110 — Flores', 'CEP 69058-225 — Manaus/AM'],
     shortLine: 'Rua Dallas, 110 — Flores • 69058-225',
-    phone: '(92) 99259-0565',
-    phoneHref: 'https://wa.me/5592992590565',
+    phone: whatsapps[0].phone,
+    phoneHref: whatsapps[0].href,
     hours: 'Segunda a sexta, 9h às 18h',
     mapQuery: 'Rua Dallas, 110 — Flores, Manaus/AM',
     mapZoom: 17,
@@ -54,8 +59,8 @@ export const locations: Location[] = [
       'CEP 77001-016 — Palmas/TO',
     ],
     shortLine: 'Quadra ACNO I (103 Norte) • Conj. 1, lote 37, sala 04',
-    phone: '(63) 3025-8500',
-    phoneHref: 'tel:+556330258500',
+    phone: whatsapps[1].phone,
+    phoneHref: whatsapps[1].href,
     hours: 'Segunda a sexta, 9h às 18h',
     mapQuery: 'Quadra ACNO I, 103 Norte, Conjunto 1, lote 37, sala 04, Palmas/TO',
     mapZoom: 17,
@@ -65,8 +70,8 @@ export const locations: Location[] = [
     kind: 'Atendimento em todo o Brasil',
     lines: ['Orientação jurídica à distância', 'Para clientes de todo o país'],
     shortLine: 'Atendimento online para todo o Brasil',
-    phone: '(92) 99259-0565',
-    phoneHref: 'https://wa.me/5592992590565',
+    phone: whatsapps[0].phone,
+    phoneHref: whatsapps[0].href,
   },
 ]
 

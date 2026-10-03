@@ -15,6 +15,7 @@ import Faq from './components/Faq'
 import CtaFinal from './components/CtaFinal'
 import Footer from './components/Footer'
 import WhatsappFloat from './components/WhatsappFloat'
+import WhatsappEscolha from './components/WhatsappEscolha'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
       </main>
       <Footer />
       <WhatsappFloat />
+      <WhatsappEscolha />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import Logo from './Logo'
-import { brand, contact, locations, navLinks, partners, signature } from '../data/site'
+import { brand, contact, locations, navLinks, partners, signature, whatsapps } from '../data/site'
 
 function Footer() {
   return (
@@ -54,16 +54,19 @@ function Footer() {
           <div>
             <h2 className="eyebrow text-gold">Contato</h2>
             <ul className="mt-5 space-y-3 text-[0.9rem]">
-              <li>
-                <a
-                  href={contact.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors duration-250 hover:text-gold"
-                >
-                  WhatsApp {contact.phone}
-                </a>
-              </li>
+              {whatsapps.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    data-direto
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors duration-250 hover:text-gold"
+                  >
+                    WhatsApp {item.phone}
+                  </a>
+                </li>
+              ))}
               <li>
                 <a
                   href={`mailto:${contact.email}`}

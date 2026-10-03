@@ -1,4 +1,4 @@
-import { contact } from '../data/site'
+import { contact, whatsapps } from '../data/site'
 import WhatsappIcon from './WhatsappIcon'
 
 function CtaFinal() {
@@ -25,11 +25,26 @@ function CtaFinal() {
             <WhatsappIcon />
           </a>
 
+          <div className="mt-7 flex flex-wrap justify-center gap-x-8 gap-y-2">
+            {whatsapps.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                data-direto
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif text-2xl text-gold-light transition-colors duration-250 hover:text-gold"
+              >
+                {item.phone}
+              </a>
+            ))}
+          </div>
+
           <a
-            href={contact.phoneHref}
-            className="mt-7 block font-serif text-2xl text-gold-light transition-colors duration-250 hover:text-gold"
+            href={`mailto:${contact.email}`}
+            className="link-underline mt-4 inline-block text-[0.95rem] text-mist/70 transition-colors duration-250 hover:text-gold-light"
           >
-            {contact.phone}
+            {contact.email}
           </a>
         </div>
       </div>

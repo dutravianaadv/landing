@@ -77,6 +77,7 @@ function Escritorio({ office }: { office: Location }) {
             >
               <a
                 href={office.phoneHref}
+                data-direto
                 target={isWhatsapp ? '_blank' : undefined}
                 rel={isWhatsapp ? 'noopener noreferrer' : undefined}
                 className="transition-colors duration-250 hover:text-gold-dark"
